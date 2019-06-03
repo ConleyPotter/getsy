@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
 
+function validator (v) {
+  return v.length > 4;
+};
+
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     fName: {
@@ -12,7 +16,7 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        min: 4,
+        validate: [validator, "Password should be at least 5 characters long."],
         required: true
     },
     date: {
