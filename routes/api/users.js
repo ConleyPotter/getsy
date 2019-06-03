@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 const User = require("../../models/User");
 
 router.get("/test", (req, res) => {
     res.json({msg: "In the user route"})
 });
-
+  
 router.post('/register', (req,res)=>{
     User.findOne({ email: req.body.email})
     .then(user => {
@@ -18,7 +19,18 @@ router.post('/register', (req,res)=>{
                 email: req.body.email,
                 password: req.body.password
             })
-            newUser.save().then(user => res.send(user)).catch(err => res.send(err));
+            // newUser.save().then(user => res.send(user)).catch(err => res.send(err));
+            bcrypt.genSalt(10, (err, salt) => {
+              bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) {
+                  throw err;
+                }
+                newUser.password = hash;
+                newUser.save()
+                  .then(user => res.json(user))
+                  .catch(err => console.log(err));
+              })
+            })
         }
     })
 })
