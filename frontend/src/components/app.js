@@ -14,7 +14,7 @@ const App = () => (
     <Modal />
     <NavBarContainer />
     <Switch>
-      <AuthRoute exact path="/products" component={ProductIndex} />
+      <ProtectedRoute exact path="/products" component={ProductIndex} />
       <AuthRoute exact path="/" component={Splash} />
     </Switch>
   </div>

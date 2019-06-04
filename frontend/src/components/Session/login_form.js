@@ -18,15 +18,12 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Product Index page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push('/products');
-    }
-
-    // Set or clear errors
-    this.setState({ errors: nextProps.errors })
+  //clear errors action an
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
+
+ 
 
   update(field) {
     return e => this.setState({
@@ -42,7 +39,9 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(this.props.history.push('/products'),
+      this.props.closeModal());
   }
 
   // Render the session errors if there are any
