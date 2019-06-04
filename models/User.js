@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-function validator (v) {
+function lengthValidator (v) {
   return v.length > 4;
 };
 
@@ -16,7 +16,10 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        validate: [validator, "Password should be at least 5 characters long."],
+        validate: [
+            lengthValidator,
+            "Password should be at least 5 characters long."
+        ],
         required: true
     },
     date: {
