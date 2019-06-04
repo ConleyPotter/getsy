@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 
+// Model
 const User = require("../../models/User");
+
+// Password config
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+// Validations //
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
@@ -72,7 +76,6 @@ router.post("/login", (req,res)=> {
     const {errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid){
-        // we may want to consider using a different status code here: 422?
         return res.status(400).json(errors) 
     }
 
