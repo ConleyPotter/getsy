@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 // Index by user
 router.get('/user/:user_id', (req, res) => {
-  Product.find({user: req.params.user_id})
+  Product.find({owner_id: User.findById(req.params.user_id).id})
     .then(products => res.json(products))
     .catch(err => 
       res.status(404).json({ noproductsfound: 'No products found from that user'}
@@ -53,11 +53,13 @@ router.post('/',
       name: req.body.name,
       price: req.body.price,
       description: req.body.description,
-      user_id: req.user.id,
+      owner_id: req.user.id,
       date: req.body.date
     });
 
-    newProduct.save().then(product => res.json(product));
+    newProduct.save()
+      .then(product => res.json(product))
+      .catch(err => res.status(400).json(err.message));
   }
 );
 

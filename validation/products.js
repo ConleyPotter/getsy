@@ -9,11 +9,12 @@ const validateProductDescription = (data) => {
 
   data.description = validText(data.description) ? data.description : "";
 
-  if (!Validator.isLength(data.description, { min: 5, max: 140 })) {
-    errors.description = "Description must be between 5 and 140 characters";
+  if (!Validator.isLength(data.description, { min: 5, max: 500 })) {
+    errors.description = "Description must be between 5 and 500 characters";
   }
 
   if (Validator.isEmpty(data.description)) {
+    console.log(data.description)
     errors.description = "Description field is required";
   }
 
