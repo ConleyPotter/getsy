@@ -7,15 +7,9 @@ const User = require("../../models/User");
 router.get("/test", (req, res) => {
     res.json({msg: "In the user route"})
 });
-<<<<<<< HEAD
 
 router.post('/register', (req,res) => {
     User.findOne({ email: req.body.email })
-=======
-  
-router.post('/register', (req,res)=>{
-    User.findOne({ email: req.body.email})
->>>>>>> d02954fbbb4fbcfd584515c9dcc08c1afe91f2a1
     .then(user => {
         if (user) {
             return res.status(400).json({email: "A user with that email is registered"})
