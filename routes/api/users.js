@@ -85,7 +85,7 @@ router.post("/login", (req,res)=> {
             errors.email = "User with this email does not exist";
             return res.status(404).json(errors);
         }
-
+ 
         bcrypt.compare(unSaltedpassword, user.password)
         .then(isMatch => {
             if (isMatch) {
