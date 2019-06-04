@@ -1,15 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const User = require("./User");
-
-// Here I assume when we pass in an owner_id we will need to check if a user
-// exists, I think it's done like this:
-function userExistsValidator (user_id) {
-  return Boolean(User.findById(user_id, (err, doc) => {
-    if (doc) return doc;
-    if (err) return null;
-  }))
-};
+const { userExistsValidator } = require('../validation/products');
 
 const ProductSchema = new Schema({
   name: {
@@ -25,7 +16,7 @@ const ProductSchema = new Schema({
     required: true
   },
   owner_id: {
-    type: ObjectID,
+    type: Schema.ObjectId,
     validate: [
       userExistsValidator,
       "The user must exist."
