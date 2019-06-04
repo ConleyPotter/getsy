@@ -6,6 +6,7 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 const User = require('./models/User');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 mongoose 
   .connect(db, { useNewUrlParser: true})
@@ -15,17 +16,9 @@ mongoose
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  
-  // const user1 = new User({
-  //   email: 'detective@ace.com',
-  //   fName: 'Jimmy',
-  //   password: 'salt'
-  // });
-  // user1.save();
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
-  res.send("Checking Mongoose");
-})
 app.use("/api/users", users);
 
 const port = process.env.PORT || 5000;
