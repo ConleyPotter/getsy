@@ -25,9 +25,11 @@ router.get("/success", passport.authenticate('jwt', {session: false}), (req, res
 ////USER CREATE/////////////  
 router.post('/register', (req,res)=>{
     const {errors, isValid } = validateRegisterInput(req.body);
+
     if (!isValid){
         return res.status(400).json(errors);
     }
+    
     User.findOne({ email: req.body.email})
     .then(user => {
         if (user) {
@@ -71,7 +73,8 @@ router.post("/login", (req,res)=> {
     const {errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid){
-        return res.status(400).json(errors)
+        // we may want to consider using a different status code here: 422?
+        return res.status(400).json(errors) 
     }
 
     const email = req.body.email;
@@ -89,7 +92,9 @@ router.post("/login", (req,res)=> {
             if (isMatch) {
                 const payload = {id: user.id, fName: user.fName, email: user.email};
                 jwt.sign(
-                    payload, keys.secretOrKey, {expiresIn: 3600},
+                    payload,
+                    keys.secretOrKey,
+                    {expiresIn: 3600},
                     (err, token) => {
                         res.json({
                             success: true,
@@ -101,7 +106,7 @@ router.post("/login", (req,res)=> {
             } else {
                 // errors.password = 'Incorrect password';
                 errors.invalid = 'Incorrect email/password combination'
-                return res.status(400).json(errors);
+                return res.status(400).json({password: errors}); // added a key
             }
         })
     })
