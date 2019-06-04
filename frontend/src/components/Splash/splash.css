@@ -1,0 +1,10 @@
+.splash-main {
+  display: flex;
+  justify-content: center
+}
+
+.splash-header {
+  font-family: serif;
+    font-weight: 100;
+    font-size: 40px;
+}
