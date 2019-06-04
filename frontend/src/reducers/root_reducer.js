@@ -5,6 +5,7 @@ import modal from './modal_reducer';
 
 const RootReducer = combineReducers({
   session, 
+  errors,
   modal
 });
 
