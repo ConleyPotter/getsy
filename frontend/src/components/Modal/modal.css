@@ -15,8 +15,9 @@
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
-  height: 350px;
+  height: 425px;
   width: 275px;
   border-radius: 3px;
   background-color: white;
+  box-sizing: border-box;
 }
