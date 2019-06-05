@@ -44,7 +44,8 @@ router.post('/',
       price: req.body.price,
       description: req.body.description,
       owner_id: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      category: req.body.category
     });
 
     newProduct.save()
@@ -61,22 +62,25 @@ router.post('/:category', (req, res) => {
       res.status(404).json({ noproductsfound: 'No products found in that catgeory'}
       )
     );
-})
+});
+
+router.patch("/:id", (req, res) => {
+  Product.updateOne({_id: req.params.id}, {
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+    owner_id: req.params.owner_id,
+    date: req.body.date,
+    category: req.body.category
+  },
+  product => res.json(product));
+});
+
+router.delete("/:id", (req, res) => {
+  Product.findByIdAndRemove(req.params.id, err => {
+    if (err) res.send(err);
+    else res.json({message: "Product has been deleted"});
+  });
+});
 
 module.exports = router;
-
-
-// Index by user - I think this should be in the user model
-// products belong to a user, so we search by user first
-// and then pull all the products belonging to that user.
-// There is an additional search for products matching the owner_id, but I don't know if that's
-// necessary (only 1 item in the db so hard to test, but this should just return all products
-// belonging to a user)
-// router.get('/user/:user_id', (req, res) => {
-//   Product.find({owner_id: User.findById(req.params.user_id).id})
-//     .then(products => res.json(products))
-//     .catch(err => 
-//       res.status(404).json({ noproductsfound: 'No products found from that user'}
-//       )
-//     );
-// })
