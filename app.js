@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const express = require("express");
+
+// Route imports
 const users = require("./routes/api/users");
+const products = require("./routes/api/products");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -23,6 +26,7 @@ require('./config/passport')(passport);
 
 // ROUTES //
 app.use("/api/users", users);
+app.use("/api/products", products);
 
 // SERVER CONFIG //
 const port = process.env.PORT || 5000;
