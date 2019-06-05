@@ -49,15 +49,11 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
-          <button 
-            onClick={this.handleRegister}
-            className="register-link">
+        <div className="nav-auth-links">
+          <button onClick={this.handleRegister} className="register-link">
             Register
           </button>
-          <button 
-            onClick={this.handleLogin}
-            className="login-link">
+          <button onClick={this.handleLogin} className="sign-in-link">
             Sign In
           </button>
         </div>
@@ -68,9 +64,26 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="navbar">
-        <h1 className="etsy-header">Etsy</h1>
-        <div className="nav-links">
-          { this.getButtons() }
+        <div className="top-navbar-buttons">
+          <h1 className="etsy-header">Etsy</h1>
+          <div className="right-hand-buttons">
+            {this.getButtons()}
+            <div className="shopping-cart-container">
+              <span className="fas fa-shopping-cart" />
+              Cart
+            </div>
+          </div>
+        </div>
+        <div className="bottom-navbar-category-buttons">
+          <ul className="category-links">
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry</li>
+          </ul>
         </div>
       </div>
     );
