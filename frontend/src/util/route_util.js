@@ -7,7 +7,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
     !loggedIn ? (
       <Component {...props} />
     ) : (
-      // Here we will redirect to our products page
+      // Here we will redirect to our products page if the user is authenticated
       <Redirect to="/products" />
     )
   )} />
