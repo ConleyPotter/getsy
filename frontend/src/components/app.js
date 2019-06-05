@@ -6,8 +6,6 @@ import Splash from './Splash/splash';
 import Modal from './Modal/modal';
 
 import ProductIndex from './Products/product_index';
-import LoginFormContainer from './Session/login_form_container';
-import SignupFormContainer from './Session/signup_form_container';
 
 const App = () => (
   <div>

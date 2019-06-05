@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #cccccc;
+}
+
+.etsy-header {
+  color: #f45800;
+  margin-left: 20px;
+  font-size: 42px;
+  font-weight: 100;
+}
+
+.nav-links {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.register-link {
+  height: 35px;
+  width: 100px;
+  font-size: medium;
+  font-family: sans-serif;
+  margin: 20px;
+  text-decoration: none;
+  color: #444444;
+}
+
+.login-link {
+  border: 1px solid grey;
+  height: 35px;
+  width: 100px;
+  font-size: medium;
+  font-family: sans-serif;
+  margin: 20px;
+  text-decoration: none;
+  color: #444444;
+  padding: 6px 8px;
+  border-radius: 5px;
+}
