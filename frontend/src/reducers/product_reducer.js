@@ -5,6 +5,9 @@ import {
 } from "../actions/product_actions";
 
 const ProductsReducer = (
+	// here is where I think we might want to discuss some changes to our state
+	// shape, it could look quite different from this. It could also stay this
+	// way if we decide that's best.
 	state = { all: {}, user: {}, new: undefined },
 	action
 ) => {
