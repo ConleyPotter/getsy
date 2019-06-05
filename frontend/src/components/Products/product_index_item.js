@@ -10,7 +10,9 @@ class ProductIndexItem extends React.Component {
                     <div>
                         <h3>Name: {this.props.product.name} image</h3>
                     </div>
-                    <span className="product-tool-tip">{this.props.product.description}</span>
+                    <span className="product-tool-tip">
+                        {this.props.product.description}
+                    </span>
                 </div>
                     <div>
                         <h3>Price: ${this.props.product.price}</h3>      

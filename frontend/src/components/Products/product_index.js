@@ -3,27 +3,22 @@ import ProductIndexItem from './product_index_item'
 import './product_index.css'
 
 class ProductIndex extends React.Component {
-  
-  constructor(props){
-    super(props)
-  }
-
   componentDidMount(){
     this.props.fetchProducts();
   }
 
   renderProducts(){
-    const pros = this.props.products.map(product => {
+    const products = this.props.products.map(product => {
       return (
         <ProductIndexItem key={product._id} product={product} />
       )
     })
-    return pros
+    return products
   }
 
   render() {
     return (
-      <div className="product-container">
+      <div className="product-index-container">
         
         {this.renderProducts()}
       </div>
