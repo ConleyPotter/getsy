@@ -63,7 +63,7 @@ export const fetchUserProducts = user_id => dispatch => {
 export const fetchProduct = product_id => dispatch => {
 	return ProductUtils.getProduct(product_id)
 		.then(product => dispatch(receiveProduct(product)))
-		.catch(err => console.log(err));
+		.catch(err => dispatch(receiveErrors(err)));
 };
 
 export const createProduct = data => dispatch => {
