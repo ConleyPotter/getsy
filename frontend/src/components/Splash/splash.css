@@ -63,6 +63,9 @@
 .left-container-img {
   width: 100%;
   border: 1px solid grey;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
 }
 
 .splash-main-right-container {
