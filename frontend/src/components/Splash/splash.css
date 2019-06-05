@@ -15,11 +15,12 @@
 .splash-header {
   font-family: serif;
   font-weight: 100;
-  font-size: 40px;
+  font-size: 35px;
   font-family: Nanum Myeongjo;
   width: 50%;
   text-align: center;
   margin: auto;
+  margin-top: 35px;
 }
 
 .splash-promo-images {
