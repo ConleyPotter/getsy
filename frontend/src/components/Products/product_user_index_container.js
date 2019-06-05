@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
-import {fetchProducts} from '../../actions/product_actions'
+import {fetchUserProducts} from '../../actions/product_actions'
 import ProductIndex from './product_index'
 
 const mapStateToProps = (state) => {
     return {
         products: Object.values(state.products),
-        indextype: 'normal'
+        indextype: 'user'
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetch: () => dispatch(fetchProducts())
+        fetch: (user_id) => dispatch(fetchUserProducts(user_id))
     }
 }
 

@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {fetchProduct} from '../../actions/product_actions'
+import {fetchProduct, fetchProductOwner} from '../../actions/product_actions'
 import ProductShow from './product_show'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        product: {}
+        product: state.products[ownProps.match.params.product_id]
     }
 }
 

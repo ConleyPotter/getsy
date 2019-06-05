@@ -4,6 +4,7 @@ export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
 export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 export const RECEIVE_USER_PRODUCTS = "RECEIVE_USER_PRODUCTS";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
+export const RECEIVE_PRODUCT_OWNER = "RECEIVE_PRODUCT_OWNER"
 
 export const receiveProducts = products => {
 	return {
@@ -25,6 +26,13 @@ export const receiveUserProducts = products => {
 		products
 	}
 };
+
+export const receiveProductOwner = user => {
+	return {
+		type: RECEIVE_PRODUCT_OWNER,
+		user
+	}
+}
 
 export const receiveErrors = errors => ({
 	type: RECEIVE_PRODUCT_ERRORS,
@@ -56,3 +64,9 @@ export const createProduct = data => dispatch => {
 		.then(product => dispatch(receiveProduct(product)))
 		.catch(err => dispatch(receiveErrors(err.response.data)));
 };
+
+export const fetchProductOwner = user_id => dispatch => {
+	return ProductUtils.getProductOwner(user_id)
+	.then(user => dispatch(receiveProductOwner(user)))
+	.catch(err => dispatch(receiveErrors(err.response.data)))
+}

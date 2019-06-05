@@ -1,11 +1,12 @@
 import {
 	RECEIVE_PRODUCTS,
 	RECEIVE_PRODUCT,
-	RECEIVE_USER_PRODUCTS
+	RECEIVE_USER_PRODUCTS,
+	RECEIVE_PRODUCT_OWNER
 } from "../actions/product_actions";
 
 const ProductsReducer = (
-	state = { all: {}, user: {}, new: undefined },
+	state = {  },
 	action
 ) => {
 	Object.freeze(state);
@@ -13,14 +14,32 @@ const ProductsReducer = (
 	let newState = Object.assign({}, state);
 	switch (action.type) {
 		case RECEIVE_PRODUCTS:
-			newState.all = action.products.data;
-			return newState;
+			
+			let oj = {};
+			let products = action.products.data;
+			Object.keys(products).forEach((product)=> {
+				oj[products[product]._id] = products[product]
+			})
+			
+			
+			return Object.assign({}, state, oj)
 		case RECEIVE_PRODUCT:
-			newState.all = action.product.data;
-			return newState;
+			
+			return Object.assign({}, state, {[action.product.data.product._id]: action.product.data })
+			
+			
 		case RECEIVE_USER_PRODUCTS:
-			newState.all = action.products.data;
-			return newState;
+			
+			let obj = {}
+			action.products.data.forEach(idx => {
+				obj[idx._id] = idx
+			});
+			
+			
+			return Object.assign({}, state, obj)
+		case RECEIVE_PRODUCT_OWNER:
+			// newState.user = action.user.data;
+			return newState
 		default:
 			return state;
 	}
