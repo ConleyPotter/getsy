@@ -17,6 +17,10 @@ class DropdownCard extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+
+  }
+
   showMenu(event) {
     event.preventDefault();
 
@@ -26,7 +30,7 @@ class DropdownCard extends React.Component {
   }
 
   closeMenu(event) {
-    if (!this.dropdownElement.contains(event.target)) {
+    if (this.dropdownElement && !this.dropdownElement.contains(event.target)) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener("click", event =>
           this.closeMenu(event)
