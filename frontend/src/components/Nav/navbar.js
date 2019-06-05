@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './navbar.css'
+import DropdownCard from './drowpdown_card';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -35,16 +36,12 @@ class NavBar extends React.Component {
   }
 
   getButtons() {
+    const { logout, currentUser } = this.props
     if (this.props.loggedIn) {
       return (
-        <div>
+        <div className="nav-logged-in">
           {/* any other links we have in the navbar */}
-          <button
-            onClick={this.handleShoppingCart}
-            className="shopping-cart-link">
-            Cart
-          </button>
-          <button onClick={this.logoutUser}>Logout</button>
+          <DropdownCard currentUser={currentUser} logout={logout}/>
         </div>
       );
     } else {
