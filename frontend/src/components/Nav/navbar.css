@@ -19,7 +19,7 @@
 .shopping-cart-container {
   margin-right: 20px;
   padding: 10px;
-  border-left: 1px solid gray;
+  border-left: 1px solid rgba(128, 128, 128, 0.521);
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
 }
 
 .shopping-cart-container span {
-  font-size: 24px;
+  font-size: 20px;
   color: gray;
 }
 

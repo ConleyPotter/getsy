@@ -76,13 +76,15 @@ class NavBar extends React.Component {
         </div>
         <div className="bottom-navbar-category-buttons">
           <ul className="category-links">
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
-            <li className="category-link-list-item">Jewelry</li>
+            <li className="category-link-list-item">Jewelry & Accessories</li>
+            <li className="category-link-list-item">Clothing & Shoes</li>
+            <li className="category-link-list-item">Home & Living</li>
+            <li className="category-link-list-item">Wedding & Party</li>
+            <li className="category-link-list-item">Toys & Entertainment</li>
+            <li className="category-link-list-item">Art & Collectibles</li>
+            <li className="category-link-list-item">Craft Supplies</li>
+            <li className="category-link-list-item">Vintage</li>
+            <li className="category-link-list-item">Gifts</li>
           </ul>
         </div>
       </div>
