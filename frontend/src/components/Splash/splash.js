@@ -22,13 +22,13 @@ class Splash extends React.Component {
                 <span className="y-b-l-text">Magical Pieces for the make-believers</span>
               </div>
               <img 
-                className="left-container-img"/>
-                {/* src={makeBelieve}/> */}
+                className="left-container-img"
+                src={`https://i.etsystatic.com/ij/26b2f5/1918869733/ij_halfxhalf.1918869733_prwzfh6e.jpg?version=0`}/>
             </div>
             <div className="splash-main-right-container">
               <img 
-                className="right-container-img"/>
-                 {/* src={dadEtsy}/> */}
+                className="right-container-img"
+              src={`https://i.etsystatic.com/ij/18fad2/1871365640/ij_halfxhalf.1871365640_jspub0a7.jpg?version=0`}/>
               <div className="yellow-box-small">
                 <span className="y-b-s-text">Perfectly personalized gifts for Dad</span>
               </div>
