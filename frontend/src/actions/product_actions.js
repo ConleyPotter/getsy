@@ -5,6 +5,7 @@ export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 export const RECEIVE_USER_PRODUCTS = "RECEIVE_USER_PRODUCTS";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_PRODUCT_OWNER = "RECEIVE_PRODUCT_OWNER"
+export const CLEAR_PRODUCTS = "CLEAR_PRODUCTS"
 
 export const receiveProducts = products => {
 	return {
@@ -31,6 +32,12 @@ export const receiveProductOwner = user => {
 	return {
 		type: RECEIVE_PRODUCT_OWNER,
 		user
+	}
+}
+
+export const clearProducts = () => {
+	return {
+		type: CLEAR_PRODUCTS
 	}
 }
 

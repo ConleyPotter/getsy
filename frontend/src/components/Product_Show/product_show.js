@@ -10,12 +10,21 @@ class ProductShow extends React.Component{
 
     componentDidMount(){
         this.props.fetchProduct(this.props.match.params.product_id)
-        
+        .then(product => {
+            if(!product) {
+                this.props.history.push("/products")
+            }
+        })
         
     }
     componentDidUpdate(prevProps){
         if (this.props.match.params.product_id !== prevProps.match.params.product_id){
             this.props.fetchProduct(this.props.match.params.product_id)
+            .then(product => {
+                if(!product) {
+                    this.props.history.push("/products")
+                }
+            })
         }
     }
 

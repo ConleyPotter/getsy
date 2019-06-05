@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {fetchUserProducts} from '../../actions/product_actions'
+import {fetchUserProducts, clearProducts} from '../../actions/product_actions'
 import ProductIndex from './product_index'
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetch: (user_id) => dispatch(fetchUserProducts(user_id))
+        fetch: (user_id) => dispatch(fetchUserProducts(user_id)),
+        clearProducts: () => dispatch(clearProducts())
     }
 }
 

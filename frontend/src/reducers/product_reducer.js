@@ -2,7 +2,8 @@ import {
 	RECEIVE_PRODUCTS,
 	RECEIVE_PRODUCT,
 	RECEIVE_USER_PRODUCTS,
-	RECEIVE_PRODUCT_OWNER
+	RECEIVE_PRODUCT_OWNER,
+	CLEAR_PRODUCTS
 } from "../actions/product_actions";
 
 const ProductsReducer = (
@@ -35,11 +36,10 @@ const ProductsReducer = (
 				obj[idx._id] = idx
 			});
 			
-			
 			return Object.assign({}, state, obj)
-		case RECEIVE_PRODUCT_OWNER:
-			// newState.user = action.user.data;
-			return newState
+		case CLEAR_PRODUCTS:
+			newState = {}
+			return Object.assign({},newState)
 		default:
 			return state;
 	}
