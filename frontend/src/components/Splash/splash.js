@@ -3,6 +3,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './splash.css'
+import etsyCheck from './etsyCheck.png';
+// import dadEtsy from './dadEtsyImg.png';
+// import makeBelieve from './makeBelieveEtsyImg.png';
 
 class Splash extends React.Component {
   render() {
@@ -18,40 +21,56 @@ class Splash extends React.Component {
               <div className="yellow-box-large">
                 <span className="y-b-l-text">Magical Pieces for the make-believers</span>
               </div>
-              <img className="left-container-img"/>
+              <img 
+                className="left-container-img"/>
+                {/* src={makeBelieve}/> */}
             </div>
             <div className="splash-main-right-container">
-              <img className="right-container-img"/>
+              <img 
+                className="right-container-img"/>
+                 {/* src={dadEtsy}/> */}
               <div className="yellow-box-small">
                 <span className="y-b-s-text">Perfectly personalized gifts for Dad</span>
               </div>
             </div>
           </div>
           <div className="marketing-labels">
-            <label className="m-label">
-              <img />
-              Unique everything
-              <label>
+            <div className="m-labels-outer-container">
+              <div className="m-label-container">
+                <img src={etsyCheck} className="etsy-check"/>
+                <label className="m-label">
+                  Unique everything
+                </label>
+              </div>
+              <label className="m-sub-label">
                 We have millions of one-of-a-kind items, so you
                 can find whatever you need (or really, really, want).
               </label>
-            </label>
-            <label className="m-label">
-              <img />
-              Independent sellers 
-              <label>
+            </div>
+            <div className="m-labels-outer-container">
+              <div className="m-label-container">
+                <img src={etsyCheck} className="etsy-check" />
+                <label className="m-label">
+                  Independent sellers 
+                </label>
+              </div>
+              <label className="m-sub-label">
                 Buy directly from someone who put their heart
                 and soul into making something special.
               </label>
-            </label>
-            <label className="m-label">
-              <img />
-              Secure shopping
-              <label>
+            </div>
+            <div className="m-labels-outer-container">
+              <div className="m-label-container">
+                <img src={etsyCheck} className="etsy-check" />
+                <label className="m-label">
+                  Secure shopping
+                </label>
+              </div>
+              <label className="m-sub-label">
                 We use best-in-class technology to protect your
                 transactions.
               </label>
-            </label>
+            </div>
           </div>
         </div>
       </div>
