@@ -12,13 +12,14 @@ const ProductsReducer = (
   let newState = Object.assign({}, state)
   switch(action.type) {
     case RECEIVE_CATEGORY_PRODUCTS:
-      let newState = {};
+      let tempObj = {};
       let products = action.products.data;
+      
       Object.keys(products).forEach(product => {
-        newState[products[product]._id] = products[product]
+        tempObj[products[product]._id] = products[product]
       });
 
-      return Object.assign({}, state, newState);
+      return Object.assign({}, newState, tempObj);
 
     default: 
       return state;
