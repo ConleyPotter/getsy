@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions/product_actions";
+import { fetchCategoryProducts } from "../../actions/product_actions";
 import ProductIndexByCategory from "./product_index_by_category";
 
 const mapStateToProps = state => {
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetch: () => dispatch(fetchProducts())
+    fetch: () => dispatch(fetchCategoryProducts())
   };
 };
 
