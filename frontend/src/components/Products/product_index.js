@@ -1,13 +1,7 @@
 import React from 'react';
 import ProductIndexItem from './product_index_item'
 import './product_index.css'
-import soupsImg from './soups.jpg';
-import avocadosImg from './avocados.jpg';
-import cameraImg from './camera.jpg';
-import glassesImg from './glasses.jpg';
-import recordPlayerImg from './recordPlayer.jpg';
 import leicaImg from './leica.jpg';
-import teacupsImg from './teacups.jpg';
 
 class ProductIndex extends React.Component {
   constructor(props) {
