@@ -17,6 +17,7 @@
   flex-direction: column;
   height: 500px;
   margin-left: 50px;
+  position: relative;
 }
 
 .product-detail-name {
@@ -28,6 +29,8 @@
 
 .product-detail-description {
   margin-top: 215px;
+  bottom: 10%;
+  position: absolute;
 }
 
 .product-detail-price {
