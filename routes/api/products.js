@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Product = require('../../models/Product');
+const User = require('../../models/User');
 const { validateProductDescription, userExistsValidator } =
   require('../../validation/products')
 
@@ -22,8 +23,23 @@ router.get('/', (req, res) => {
 
 // Show route
 router.get("/:id", (req, res) => {
+  
   Product.findById(req.params.id)
-    .then(product => res.json(product))
+  .then(product => {
+    if(product){
+      User.findById(product.owner_id)
+      .then(user => {
+        if (user) {
+          const filter = {
+            fName: user.fName,
+            email: user.email,
+            _id: user._id
+          }
+          res.json({product: product, user: filter})
+        }
+      })
+    }
+  })
     .catch(err =>
       res.status(404).json({ noproductsfound: "No product found with that ID" })
     );

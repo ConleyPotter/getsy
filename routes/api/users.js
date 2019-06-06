@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Model
 const User = require("../../models/User");
+const Product = require("../../models/Product");
 
 // Password config
 const bcrypt = require('bcryptjs');
@@ -26,6 +27,19 @@ router.get("/success", passport.authenticate('jwt', {session: false}), (req, res
         fName: req.user.fName
     });
 })
+//user show////
+router.get("/u/:user_id", (req, res)=>{
+    User.findById(req.params.user_id)
+    .then(user => {
+        res.json({
+            id: user.id,
+            email: user.email,
+            fName: user.fName
+        });
+    })
+    .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
+})
+
 ////USER CREATE/////////////  
 router.post('/register', (req,res)=>{
     const {errors, isValid } = validateRegisterInput(req.body);
@@ -114,6 +128,15 @@ router.post("/login", (req,res)=> {
     })
 
 })
+///finds user's product
+router.get('/:user_id', (req, res) => {
+    Product.find({ owner_id: req.params.user_id })
+      .then(products => res.json(products))
+      .catch(err =>
+        res.status(404).json({ noproductsfound: 'No products found from that user' }
+        )
+      );
+  })
 
 // Product Index by user - I think this should be in the user model
 // products belong to a user, so we search by user first
