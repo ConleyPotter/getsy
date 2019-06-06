@@ -10,6 +10,8 @@
 .product-show-img {
   height: 500px;
   width: auto;
+  border-bottom: 1px solid #b5b5b5;
+  padding-bottom: 100px;
 }
 
 .product-details {
@@ -31,6 +33,9 @@
   margin-top: 215px;
   bottom: 10%;
   position: absolute;
+  border-top: 1px solid #b5b5b5;
+  padding-top: 20px;
+  width: 100%;
 }
 
 .product-detail-price {
