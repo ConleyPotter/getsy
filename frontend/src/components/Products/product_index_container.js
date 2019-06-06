@@ -4,7 +4,7 @@ import ProductIndex from './product_index'
 
 const mapStateToProps = (state) => {
     return {
-        products: Object.values(state.products.all)
+        products: Object.values(state.products)
     }
 }
 

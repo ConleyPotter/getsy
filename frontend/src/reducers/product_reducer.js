@@ -8,7 +8,7 @@ const ProductsReducer = (
 	// here is where I think we might want to discuss some changes to our state
 	// shape, it could look quite different from this. It could also stay this
 	// way if we decide that's best.
-	state = { all: {}, user: {}, new: undefined },
+	state = {},
 	action
 ) => {
 	Object.freeze(state);
@@ -16,11 +16,9 @@ const ProductsReducer = (
 	let newState = Object.assign({}, state);
 	switch (action.type) {
 		case RECEIVE_PRODUCTS:
-			newState.all = action.products.data;
-			return newState;
+			return action.products.data
 		case RECEIVE_PRODUCT:
-			newState.all = action.product.data;
-			return newState;
+			return Object.assign({}, state, {[action.product.data._id]: action.product.data })
 		case RECEIVE_USER_PRODUCTS:
 			newState.all = action.products.data;
 			return newState;
