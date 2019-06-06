@@ -3,7 +3,14 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-top: 75px;
+}
+
+.product-index-category {
+  font-size: 26px;
+  margin-left: 50px;
+  margin-top: 50px;
+  font-family: sans-serif;
+  font-weight: 400;
 }
 
 .product-index-ul {

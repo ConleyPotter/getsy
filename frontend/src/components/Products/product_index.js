@@ -35,10 +35,13 @@ class ProductIndex extends React.Component {
 
   render() {
     return (
-      <div className="product-index-container">
-        <ul className="product-index-ul">
-          {this.renderProducts()}
-        </ul>
+      <div>
+        <h1 className="product-index-category">Category Name</h1>
+        <div className="product-index-container">
+          <ul className="product-index-ul">
+            {this.renderProducts()}
+          </ul>
+        </div>
       </div>
     )
   }

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './product_index_item.css'
 import soupsImg from './soups.jpg';
 import avocadosImg from './avocados.jpg';
 import cameraImg from './camera.jpg';
@@ -17,13 +16,7 @@ class ProductIndexItem extends React.Component {
           <div className="product-link-container">
             <Link to={`/products/${this.props.product._id}`}
               className="link-container">
-                {/* <div className="product-card"> */}
-                  <img src={leicaImg} className="img"/>
-                    {/* <div>
-                    </div>
-                    <span className="product-tool-tip">
-                    </span> */}
-                {/* </div> */}
+              <img src={leicaImg} className="img"/>
               <div className="product-label-container">
                 <div className="product-name">{this.props.product.name}</div>
                 {/* <div className="product-description">{this.props.product.description}</div> */}
