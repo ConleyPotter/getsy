@@ -123,7 +123,7 @@ router.post("/login", (req,res)=> {
 // belonging to a user)
 
 router.get("/u", (req, res)=>{
-    User.find({}, 'fName email _id')
+    User.find({}, 'fName email _id date')
     .then(users => {
         res.json(users)
     })
@@ -136,7 +136,8 @@ router.get("/u/:user_id", (req, res)=>{
         res.json({
             _id: user.id,
             email: user.email,
-            fName: user.fName
+            fName: user.fName,
+            date: user.date
         });
     })
     .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
