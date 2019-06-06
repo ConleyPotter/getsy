@@ -14,10 +14,11 @@ export const receiveProducts = products => {
 	}
 };
 
-export const receiveProduct = product => {
+export const receiveProduct = data => {
 	return {
 		type: RECEIVE_PRODUCT, 
-		product
+		product: data.product,
+		user: data.user
 	}
 };
 
@@ -41,10 +42,12 @@ export const clearProducts = () => {
 	}
 }
 
-export const receiveErrors = errors => ({
-	type: RECEIVE_PRODUCT_ERRORS,
-	errors
-});
+export const receiveErrors = errors => {
+	return {
+		type: RECEIVE_PRODUCT_ERRORS,
+		errors
+	}
+};
 
 export const clearErrors = () => ({
 	type: "CLEAR_ERRORS"
@@ -62,13 +65,13 @@ export const fetchUserProducts = user_id => dispatch => {
 };
 export const fetchProduct = product_id => dispatch => {
 	return ProductUtils.getProduct(product_id)
-		.then(product => dispatch(receiveProduct(product)))
+		.then(product => dispatch(receiveProduct(product.data)))
 		.catch(err => dispatch(receiveErrors(err)));
 };
 
 export const createProduct = data => dispatch => {
 	return ProductUtils.createProduct(data)
-		.then(product => dispatch(receiveProduct(product)))
+		.then(product => dispatch(receiveProduct(product.data)))
 		.catch(err => dispatch(receiveErrors(err.response.data)));
 };
 

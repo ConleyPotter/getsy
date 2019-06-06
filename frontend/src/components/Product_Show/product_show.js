@@ -27,6 +27,7 @@ class ProductShow extends React.Component{
             <div className="product-detail-container">
               <img src={leicaImg} className="product-show-img"/>
               <div className="product-details">
+                <span>by: {user.fName}</span>
                 <div className="product-detail-name">{product.name}</div>
                 <div className="product-detail-price">${product.price}</div>
                 <button className="add-to-basket-button">Add to basket</button>

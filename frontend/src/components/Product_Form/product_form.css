@@ -1,0 +1,9 @@
+form input{
+    border: 1px solid black;
+    margin-left: 7px;
+}
+
+form textarea {
+    border: 1px solid black;
+    margin-left: 7px;
+}

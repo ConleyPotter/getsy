@@ -29,7 +29,7 @@ const ProductsReducer = (
 			return Object.assign({}, state, oj)
 		case RECEIVE_PRODUCT:
 			
-			return Object.assign({}, state, {[action.product.data.product._id]: action.product.data })
+			return Object.assign({}, state, {[action.product._id]: action.product })
 			
 			
 		case RECEIVE_USER_PRODUCTS:

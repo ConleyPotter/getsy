@@ -1,5 +1,6 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
+import './user_profile.css'
 class UserProfile extends React.Component{
 
     componentDidMount(){
@@ -18,6 +19,8 @@ class UserProfile extends React.Component{
                 <p>{this.props.user.fName}</p>
                 <p>{this.props.user.email}</p>
                 {sameuser}
+                <br></br>
+                <Link to="/products/new" className="create-product-btn">Create a product</Link>
             </div>
         )
     }

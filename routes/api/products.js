@@ -26,9 +26,11 @@ router.get("/:id", (req, res) => {
   
   Product.findById(req.params.id)
   .then(product => {
+    debugger
     if(product){
       User.findById(product.owner_id)
       .then(user => {
+        
         if (user) {
           const filter = {
             fName: user.fName,
@@ -37,7 +39,9 @@ router.get("/:id", (req, res) => {
           }
           res.json({product: product, user: filter})
         }
+        
       })
+      
     }
   })
     .catch(err =>
@@ -65,7 +69,7 @@ router.post('/',
     });
 
     newProduct.save()
-      .then(product => res.json(product))
+      .then(product => res.json({product}))
       .catch(err => res.status(400).json(err.message));
   }
 );
