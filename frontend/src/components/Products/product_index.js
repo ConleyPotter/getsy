@@ -7,7 +7,7 @@ class ProductIndex extends React.Component {
   constructor(props) {
     super(props)
     this.images = [
-      soupsImg, avocadosImg, cameraImg, glassesImg, recordPlayerImg, leicaImg, teacupsImg
+      leicaImg
     ]
   }
 
