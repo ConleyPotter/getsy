@@ -13,10 +13,12 @@ class ProductIndex extends React.Component {
 
   componentDidMount(){
     const { indextype } = this.props
-    if (indextype == 'user'){
+    debugger
+    if (indextype === 'user'){
       this.props.clearProducts();
       this.props.fetch(this.props.match.params.user_id);
-    } else if (indextype == 'categories') {
+    } else if (indextype === 'categories') {
+
       this.props.clearProducts();
       this.props.fetch(this.props.match.params.category);
     } else {

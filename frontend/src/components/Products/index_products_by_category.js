@@ -6,6 +6,7 @@ import {
 import ProductIndexByCategory from "./product_index";
 
 const mapStateToProps = state => {
+  debugger;
   return {
     products: Object.values(state.products),
     indextype: "categories"
