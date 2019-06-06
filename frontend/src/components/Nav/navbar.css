@@ -1,0 +1,93 @@
+.navbar {
+  border-bottom: 1px solid #cccccc;
+}
+
+.top-navbar-buttons {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.right-hand-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopping-cart-container {
+  margin-right: 20px;
+  padding: 10px;
+  border-left: 1px solid rgba(128, 128, 128, 0.521);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  font-size: 12px;
+  text-align: center;
+}
+
+.shopping-cart-container span {
+  font-size: 20px;
+  color: gray;
+}
+
+.bottom-navbar-category-buttons {
+  height: 34px;
+}
+
+.category-links {
+  display: flex;
+  justify-content: space-around;
+  color: #222222;
+  font-size: 13px;
+  font-family: "Roboto",
+  "Droid Sans",
+  "Segoe UI",
+  "Helvetica",
+  Arial,
+  sans-serif;
+}
+
+.category-link-list-item {
+  margin: 4px 12px 0 0;
+}
+
+.etsy-header {
+  color: #f45800;
+  margin-left: 20px;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.nav-auth-links {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.register-link {
+  width: 64px;
+  line-height: 16px;
+  font-family: sans-serif;
+  text-align: center;
+  margin-right: 7px;
+  text-decoration: none;
+  color: #444444;
+  background-color: white;
+  border: none;
+
+}
+
+.sign-in-link {
+  border: 1px solid grey;
+  line-height: 16px;
+  font-family: sans-serif;
+  text-align: center;
+  text-decoration: none;
+  color: #444444;
+  padding: 6px 8px;
+  border-radius: 5px;
+}

@@ -20,16 +20,6 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ noproductsfound: 'No products found' }));
 });
 
-// Index by user
-router.get('/user/:user_id', (req, res) => {
-  Product.find({owner_id: User.findById(req.params.user_id).id})
-    .then(products => res.json(products))
-    .catch(err => 
-      res.status(404).json({ noproductsfound: 'No products found from that user'}
-      )
-    );
-})
-
 // Show route
 router.get("/:id", (req, res) => {
   Product.findById(req.params.id)
@@ -54,7 +44,8 @@ router.post('/',
       price: req.body.price,
       description: req.body.description,
       owner_id: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      category: req.body.category
     });
 
     newProduct.save()
@@ -62,5 +53,34 @@ router.post('/',
       .catch(err => res.status(400).json(err.message));
   }
 );
+
+// route to search by category
+router.post('/:category', (req, res) => {
+  Product.find({ category: req.params.category })
+    .then(products => res.json(products))
+    .catch(err => 
+      res.status(404).json({ noproductsfound: 'No products found in that catgeory'}
+      )
+    );
+});
+
+router.patch("/:id", (req, res) => {
+  Product.updateOne({_id: req.params.id}, {
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+    owner_id: req.params.owner_id,
+    date: req.body.date,
+    category: req.body.category
+  },
+  product => res.json(product));
+});
+
+router.delete("/:id", (req, res) => {
+  Product.findByIdAndRemove(req.params.id, err => {
+    if (err) res.send(err);
+    else res.json({message: "Product has been deleted"});
+  });
+});
 
 module.exports = router;
