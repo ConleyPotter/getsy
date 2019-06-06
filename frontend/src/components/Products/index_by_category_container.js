@@ -1,17 +1,21 @@
 import { connect } from "react-redux";
-import { fetchCategoryProducts } from "../../actions/product_actions";
-import ProductIndexByCategory from "./product_index_by_category";
+import {
+  fetchCategoryProducts,
+  clearProducts
+} from "../../actions/product_actions";
+import ProductIndexByCategory from "./product_index";
 
 const mapStateToProps = state => {
   return {
     products: Object.values(state.products),
-    indextype: "normal"
+    indextype: "categories"
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetch: () => dispatch(fetchCategoryProducts())
+    fetch: () => dispatch(fetchCategoryProducts()),
+    clearProducts: () => dispatch(clearProducts())
   };
 };
 
