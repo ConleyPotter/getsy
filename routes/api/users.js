@@ -138,12 +138,6 @@ router.get('/:user_id', (req, res) => {
       );
   })
 
-// Product Index by user - I think this should be in the user model
-// products belong to a user, so we search by user first
-// and then pull all the products belonging to that user.
-// There is an additional search for products matching the owner_id, but I don't know if that's
-// necessary (only 1 item in the db so hard to test, but this should just return all products
-// belonging to a user)
 router.get('/:user_id', (req, res) => {
   Product.find({ owner_id: req.params.user_id })
     .then(products => res.json(products))
@@ -153,6 +147,17 @@ router.get('/:user_id', (req, res) => {
     );
 })
 
-
+// find a user by user_id
+router.get("/u/:user_id", (req, res) => {
+  User.findById(req.params.user_id)
+    .then(user => {
+      res.json({
+        id: user.id,
+        email: user.email,
+        fName: user.fName
+      });
+    })
+    .catch(err => res.status(404).json({ nouser: "Could not find a user with that id" }))
+})
 
 module.exports = router;
