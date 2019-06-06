@@ -19,7 +19,10 @@ class ProductForm extends React.Component {
         e.preventDefault();
         this.props.action(this.state)
         .then(product => {
-            this.props.history.push(`/products/${product.product._id}`);
+            if (product.product){
+
+                this.props.history.push(`/products/${product.product._id}`);
+            }
         })
     }
 

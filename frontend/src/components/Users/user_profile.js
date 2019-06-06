@@ -10,7 +10,7 @@ class UserProfile extends React.Component{
     render(){
         if(!this.props.user) return null;
         let sameuser = null;
-        if (this.props.user._id === this.props.currentUser.id){
+        if (this.props.user.id === this.props.currentUser.id){
             sameuser = <p>this is the login user's page</p>
         }
         return(

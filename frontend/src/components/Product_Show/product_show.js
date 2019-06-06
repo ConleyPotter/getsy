@@ -12,22 +12,28 @@ class ProductShow extends React.Component{
             errorMessage: ""
         }
     }
-
     componentDidMount(){
 
       this.props.fetchProduct(this.props.match.params.product_id);
+      
+    }
+    
+    componentDidUpdate(prevProps){
+      if(prevProps.match.params.product_id !== this.props.match.params.product_id){
+        this.props.fetchProduct(this.props.match.params.product_id);
+      }
     }
 
     render(){
-      if (!this.props.product.product) return null;
-      const product = this.props.product.product
-      const user = this.props.product.user
+      if (!this.props.product) return null;
+      const product = this.props.product
+      const user = this.props.user
         return (
           <div>
             <div className="product-detail-container">
               <img src={leicaImg} className="product-show-img"/>
               <div className="product-details">
-                <span>by: {user.fName}</span>
+                <span>By: {user.fName}</span>
                 <div className="product-detail-name">{product.name}</div>
                 <div className="product-detail-price">${product.price}</div>
                 <button className="add-to-basket-button">Add to basket</button>

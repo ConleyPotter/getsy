@@ -15,6 +15,7 @@ export const receiveProducts = products => {
 };
 
 export const receiveProduct = data => {
+	
 	return {
 		type: RECEIVE_PRODUCT, 
 		product: data.product,
@@ -55,7 +56,10 @@ export const clearErrors = () => ({
 
 export const fetchProducts = () => dispatch => {
 	return ProductUtils.getProducts()
-		.then(products => dispatch(receiveProducts(products)))
+		.then(products => {
+			
+			dispatch(receiveProducts(products))
+		})
 		.catch(err => console.log(err));
 };
 export const fetchUserProducts = user_id => dispatch => {
@@ -65,13 +69,18 @@ export const fetchUserProducts = user_id => dispatch => {
 };
 export const fetchProduct = product_id => dispatch => {
 	return ProductUtils.getProduct(product_id)
-		.then(product => dispatch(receiveProduct(product.data)))
+		.then(product => {
+			dispatch(receiveProduct(product.data))
+		})
 		.catch(err => dispatch(receiveErrors(err)));
 };
 
 export const createProduct = data => dispatch => {
+	
 	return ProductUtils.createProduct(data)
-		.then(product => dispatch(receiveProduct(product.data)))
+		.then(product => {
+			return dispatch(receiveProduct(product.data))
+		})
 		.catch(err => dispatch(receiveErrors(err.response.data)));
 };
 
