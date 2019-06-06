@@ -5,6 +5,14 @@ import leicaImg from './leica.jpg';
 
 class ProductShow extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.state= {
+            notFound: false,
+            errorMessage: ""
+        }
+    }
+
     componentDidMount(){
 
       this.props.fetchProduct(this.props.match.params.product_id);

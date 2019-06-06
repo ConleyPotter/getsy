@@ -6,6 +6,7 @@ import Splash from "./Splash/splash";
 import Modal from "./Modal/modal";
 
 import ProductIndexContainer from "./Products/product_index_container";
+import ProductUserContainer from "./Products/product_user_index_container";
 import LoginFormContainer from "./Session/login_form_container";
 import SignupFormContainer from "./Session/signup_form_container";
 
@@ -17,6 +18,7 @@ const App = () => (
 		<NavBarContainer />
 		<Switch>
 			<ProtectedRoute exact path="/products/:product_id" component={ProductShowContainer} />
+			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
 			<ProtectedRoute exact path="/products" component={ProductIndexContainer} />
 			<AuthRoute exact path="/" component={Splash} />
 		</Switch>
