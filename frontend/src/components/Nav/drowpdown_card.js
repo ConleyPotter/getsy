@@ -49,10 +49,11 @@ class DropdownCard extends React.Component {
           </div>
           <div className="additional-profile-info">
             <p className="fName">{currentUser.fName}</p>
-            <p className="view-profile">
+            <Link to={`/users/${currentUser.id}`}> <p className="view-profile">
               View profile 
               <span className="fas fa-chevron-right" />
             </p>
+            </Link>
           </div>
         </div>
         <div className="item-separator" />

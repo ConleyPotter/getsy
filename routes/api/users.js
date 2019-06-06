@@ -121,6 +121,27 @@ router.post("/login", (req,res)=> {
 // There is an additional search for products matching the owner_id, but I don't know if that's
 // necessary (only 1 item in the db so hard to test, but this should just return all products
 // belonging to a user)
+
+router.get("/u", (req, res)=>{
+    User.find({}, 'fName email _id')
+    .then(users => {
+        res.json(users)
+    })
+    .catch(err => res.status(404).json({nouser: "no user found"}))
+})
+
+router.get("/u/:user_id", (req, res)=>{
+    User.findById(req.params.user_id)
+    .then(user => {
+        res.json({
+            _id: user.id,
+            email: user.email,
+            fName: user.fName
+        });
+    })
+    .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
+})
+
 router.get('/:user_id', (req, res) => {
   Product.find({ owner_id: req.params.user_id })
     .then(products => res.json(products))
@@ -129,6 +150,9 @@ router.get('/:user_id', (req, res) => {
       )
     );
 })
+
+
+
 
 
 

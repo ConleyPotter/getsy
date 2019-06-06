@@ -7,6 +7,7 @@ import Modal from "./Modal/modal";
 import "./app.css";
 
 import ProductIndex from "./Products/product_index";
+import UserProfileContainer from './Users/user_profile_container'
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
     <NavBarContainer />
     <Switch>
       <ProtectedRoute exact path="/products" component={ProductIndex} />
+      <ProtectedRoute path="/users/:user_id" component={UserProfileContainer} />
       <AuthRoute exact path="/" component={Splash} />
     </Switch>
   </div>
