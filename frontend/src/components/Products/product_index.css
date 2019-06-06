@@ -1,5 +1,47 @@
-.product-index-container{
-    display: flex;
+.product-index-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 75px;
+}
+
+.product-index-ul {
+  display: flex;
+}
+
+.product-link-container {
+  display: flex;
+}
+
+.link-container {
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.product-label-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  width: 225px;
+}
+
+.product-name {
+  color: #404040;
+  font-family: sans-serif;
+}
+
+.product-description {
+
+}
+
+.product-price {
+  color: black;
+  font-family: sans-serif;
 }
 
 

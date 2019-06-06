@@ -1,23 +1,37 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './product_index_item.css'
+import soupsImg from './soups.jpg';
+import avocadosImg from './avocados.jpg';
+import cameraImg from './camera.jpg';
+import glassesImg from './glasses.jpg';
+import recordPlayerImg from './recordPlayer.jpg';
+import leicaImg from './leica.jpg';
+import teacupsImg from './teacups.jpg';
+
+
 class ProductIndexItem extends React.Component {
 
     render(){
         return (
-            <Link to={`/products/${this.props.product._id}`}>
-                <div className="product-card">
-                    <div>
-                        <h3>Name: {this.props.product.name} image</h3>
+          <div className="product-link-container">
+            <Link to={`/products/${this.props.product._id}`}
+              className="link-container">
+                {/* <div className="product-card"> */}
+                  <img src={leicaImg} className="img"/>
+                    {/* <div>
                     </div>
                     <span className="product-tool-tip">
-                        {this.props.product.description}
-                    </span>
-                </div>
-                    <div>
-                        <h3>Price: ${this.props.product.price}</h3>      
-                    </div>
+                    </span> */}
+                {/* </div> */}
+              <div className="product-label-container">
+                <div className="product-name">{this.props.product.name}</div>
+                {/* <div className="product-description">{this.props.product.description}</div> */}
+                <div className="product-price">${this.props.product.price}</div>      
+              </div>
             </Link>
+
+          </div>
         )
     }
 
