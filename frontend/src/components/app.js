@@ -11,6 +11,7 @@ import LoginFormContainer from "./Session/login_form_container";
 import SignupFormContainer from "./Session/signup_form_container";
 
 import ProductShowContainer from './Product_Show/product_show_container'
+import "./app.css";
 
 const App = () => (
 	<div>

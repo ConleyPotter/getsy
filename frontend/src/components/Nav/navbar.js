@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './navbar.css'
+import DropdownCard from './drowpdown_card';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -35,29 +36,21 @@ class NavBar extends React.Component {
   }
 
   getButtons() {
+    const { logout, currentUser } = this.props
     if (this.props.loggedIn) {
       return (
-        <div>
+        <div className="nav-logged-in">
           {/* any other links we have in the navbar */}
-          <button
-            onClick={this.handleShoppingCart}
-            className="shopping-cart-link">
-            Cart
-          </button>
-          <button onClick={this.logoutUser}>Logout</button>
+          <DropdownCard currentUser={currentUser} logout={logout}/>
         </div>
       );
     } else {
       return (
-        <div>
-          <button 
-            onClick={this.handleRegister}
-            className="register-link">
+        <div className="nav-auth-links">
+          <button onClick={this.handleRegister} className="register-link">
             Register
           </button>
-          <button 
-            onClick={this.handleLogin}
-            className="login-link">
+          <button onClick={this.handleLogin} className="sign-in-link">
             Sign In
           </button>
         </div>
@@ -68,9 +61,28 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="navbar">
-        <h1 className="etsy-header">Etsy</h1>
-        <div className="nav-links">
-          { this.getButtons() }
+        <div className="top-navbar-buttons">
+          <h1 className="etsy-header">Etsy</h1>
+          <div className="right-hand-buttons">
+            {this.getButtons()}
+            <div className="shopping-cart-container">
+              <span className="fas fa-shopping-cart" />
+              Cart
+            </div>
+          </div>
+        </div>
+        <div className="bottom-navbar-category-buttons">
+          <ul className="category-links">
+            <li className="category-link-list-item">Jewelry & Accessories</li>
+            <li className="category-link-list-item">Clothing & Shoes</li>
+            <li className="category-link-list-item">Home & Living</li>
+            <li className="category-link-list-item">Wedding & Party</li>
+            <li className="category-link-list-item">Toys & Entertainment</li>
+            <li className="category-link-list-item">Art & Collectibles</li>
+            <li className="category-link-list-item">Craft Supplies</li>
+            <li className="category-link-list-item">Vintage</li>
+            <li className="category-link-list-item">Gifts</li>
+          </ul>
         </div>
       </div>
     );

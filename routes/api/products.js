@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ noproductsfound: 'No products found' }));
 });
 
-
 // Show route
 router.get("/:id", (req, res) => {
   
@@ -70,4 +69,30 @@ router.post('/',
   }
 );
 
+// route to search by category
+router.post('/:category', (req, res) => {
+  Product.find({ category: req.params.category })
+    .then(products => res.json(products))
+    .catch(err => 
+      res.status(404).json({ noproductsfound: 'No products found in that catgeory'}
+      )
+    );
+})
+
 module.exports = router;
+
+
+// Index by user - I think this should be in the user model
+// products belong to a user, so we search by user first
+// and then pull all the products belonging to that user.
+// There is an additional search for products matching the owner_id, but I don't know if that's
+// necessary (only 1 item in the db so hard to test, but this should just return all products
+// belonging to a user)
+// router.get('/user/:user_id', (req, res) => {
+//   Product.find({owner_id: User.findById(req.params.user_id).id})
+//     .then(products => res.json(products))
+//     .catch(err => 
+//       res.status(404).json({ noproductsfound: 'No products found from that user'}
+//       )
+//     );
+// })
