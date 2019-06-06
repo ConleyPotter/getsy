@@ -22,8 +22,8 @@ const App = () => (
 			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
       <ProtectedRoute exact path="/products" component={ProductIndexContainer} />
       <ProtectedRoute 
-        exact 
-        path="products/cat/:category" 
+        exact
+        path="/products/cat/:category" 
         component={ProductIndexByCategory} 
       />
 			<AuthRoute exact path="/" component={Splash} />

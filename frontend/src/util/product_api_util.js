@@ -24,5 +24,5 @@ export const getProductOwner = user_id => {
 }
 
 export const getProductsByCategory = category => {
-  return axios.get(`/api/products/${category}`)
+  return axios.get(`/api/products/cat/${category}`)
 };

@@ -6,7 +6,6 @@ import {
 import ProductIndexByCategory from "./product_index";
 
 const mapStateToProps = state => {
-  debugger;
   return {
     products: Object.values(state.products),
     indextype: "categories"
@@ -15,7 +14,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetch: () => dispatch(fetchCategoryProducts()),
+    fetch: (category) => dispatch(fetchCategoryProducts(category)),
     clearProducts: () => dispatch(clearProducts())
   };
 };
