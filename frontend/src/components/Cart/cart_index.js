@@ -4,6 +4,15 @@ import {Link} from 'react-router-dom'
 import CartIndexItem from './cart_index_item'
 
 class CartIndex extends React.Component{
+
+    componentDidMount(){
+        //fetchCartHere
+    }
+
+    renderCartItems() {
+        //grab cart and create CartIndexItem for each cart item
+    }
+
     render(){
         return (
             <div className="cart-wrapper">

@@ -29,7 +29,6 @@
 .cart-main-display{
     border: 1px solid gray;
     align-self: center;
-    padding: 5px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     
@@ -81,4 +80,9 @@
     padding: 10px;
     margin-top: 5px;
     
+}
+
+.checkout-btn:hover{
+    background-color: #3c3c3c;
+    transition: 0.2s background-color;
 }
