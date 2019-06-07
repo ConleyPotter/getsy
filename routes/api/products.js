@@ -71,7 +71,7 @@ router.post('/',
 );
 
 // route to search by category
-router.post('/:category', (req, res) => {
+router.get('/cat/:category', (req, res) => {
   Product.find({ category: req.params.category })
     .then(products => res.json(products))
     .catch(err => 

@@ -1,11 +1,11 @@
-import * as ProductUtils from "../util/product_api_util";
-
+import * as ProductUtils from '../util/product_api_util'
 export const RECEIVE_PRODUCTS = "RECEIVE_PRODUCTS";
 export const RECEIVE_PRODUCT = "RECEIVE_PRODUCT";
 export const RECEIVE_USER_PRODUCTS = "RECEIVE_USER_PRODUCTS";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_PRODUCT_OWNER = "RECEIVE_PRODUCT_OWNER"
 export const CLEAR_PRODUCTS = "CLEAR_PRODUCTS"
+export const RECEIVE_CATEGORY_PRODUCTS = "RECEIVE_CATEGORY_PRODUCTS"
 
 export const receiveProducts = products => {
 	return {
@@ -19,6 +19,13 @@ export const receiveProduct = product => {
 		type: RECEIVE_PRODUCT, 
 		product
 	}
+};
+
+export const receiveCategoryProducts = products => {
+  return {
+    type: RECEIVE_CATEGORY_PRODUCTS,
+    products
+  }
 };
 
 export const receiveUserProducts = products => {
@@ -76,4 +83,10 @@ export const fetchProductOwner = user_id => dispatch => {
 	return ProductUtils.getProductOwner(user_id)
 	.then(user => dispatch(receiveProductOwner(user)))
 	.catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const fetchCategoryProducts = category => dispatch => {
+  return ProductUtils.getProductsByCategory(category)
+    .then(products => dispatch(receiveCategoryProducts(products)))
+		.catch(err => dispatch(receiveErrors(err)));
 }
