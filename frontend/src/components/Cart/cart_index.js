@@ -23,22 +23,7 @@ class CartIndex extends React.Component{
                 <div className="cart-main-display">
                     <div className="cart-left-size">
                         <ul className="cart-items-container">
-                            <li className="cart-item">
-                                <div className="cart-item-img">
-                                    image here
-                                </div>
-                                <div className="cart-item-name">
-                                    Funny Congratulation Card (is a link)
-                                    <div className="cart-item-save-remove">
-                                        <span>save for later   </span>
-                                        <span>Remove</span>
-                                    </div>
-                                </div>
-                                    <span>quantity</span>
-                                <div className="cart-item-price">
-                                    <span>$4.99</span>
-                                </div>
-                            </li>
+                            <CartIndexItem />
                             <CartIndexItem />
                         </ul>
                     </div>
@@ -50,7 +35,7 @@ class CartIndex extends React.Component{
                         <Link to="#" className="checkout-btn">Proceed to Checkout</Link>
                     </div>
                 </div>
-                <span className="cart-bottom-message">[leaf] Etsy offsets carbon emissions from every delivery</span>
+                <span className="cart-bottom-message"><i className="fas fa-leaf"></i> Etsy offsets carbon emissions from every delivery</span>
             </div>
         )
     }
