@@ -39,31 +39,74 @@ class ProductForm extends React.Component {
     render(){
         
         return (
-            <div>
-                <div className="form-container">
-                    {this.renderErrors()}
-                    <form className="create-or-destroy" onSubmit={this.handleSubmit}> 
-                        <label>
-                            name
-                        </label>
-                        <input type="text" value={this.state.name} onChange={this.onChange("name")} placeholder="name"/>
-                        <label>
-                            price
-                        </label>
-                        <input type="number" value={this.state.price} onChange={this.onChange("price")} placeholder="price"/>
-                        <label>
-                            description
-                        </label>
-                        <textarea value={this.state.description} onChange={this.onChange("description")}></textarea>
-                        <label>
-                            category
-                        </label>
-                        <input type="text" value={this.state.category} onChange={this.onChange("category")} placeholder="cat" />
-                        <input type="submit" value="Product up" />
-                    </form>
+          <div className="create-product-outer-container">
+            <div className="form-container">
+              {this.renderErrors()}
+              <div className="side-bar-info-container">
+                <div className="create-a-listing-header">
+                  <h1>Listing Details</h1>
+                  <p>
+                    Tell the world about your item and why they'll love
+                    it.
+                  </p>
                 </div>
+                <div className="create-a-listing-header">
+                  <h3>Title</h3>
+                  <p>
+                    Include keywords that buyers would use to search for
+                    your item
+                  </p>
+                </div>
+                <div className="create-a-listing-header">
+                  <h3>Price</h3>
+                  <p>How much does it cost to buy this product?</p>
+                </div>
+                <div className="create-a-listing-header">
+                  <h3>Description</h3>
+                  <p>
+                    Tell your buyers what to expect
+                  </p>
+                </div>
+                <div className="create-a-listing-header">
+                  <h3>Category</h3>
+                  <p>
+                    Choose from one of these categories so that users
+                    can find your product
+                  </p>
+                </div>
+              </div>
+              <form
+                className="create-or-destroy"
+                onSubmit={this.handleSubmit}
+              >
+                <label id="top-label">name</label>
+                <input
+                  type="text"
+                  value={this.state.name}
+                  onChange={this.onChange("name")}
+                />
+                <label>price</label>
+                <input
+                  type="number"
+                  value={this.state.price}
+                  onChange={this.onChange("price")}
+                />
+                <label>description</label>
+                <textarea
+                  value={this.state.description}
+                  onChange={this.onChange("description")}
+                />
+                <label>category</label>
+                <input
+                  type="text"
+                  value={this.state.category}
+                  onChange={this.onChange("category")}
+                />
+                <input type="submit" value="Product up" />
+              </form>
             </div>
-        )
+          </div>
+        );
     }
 }
 

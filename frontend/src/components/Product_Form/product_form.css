@@ -1,9 +1,65 @@
-form input{
-    border: 1px solid black;
-    margin-left: 7px;
+.create-product-outer-container {
+    background: white;
+    margin: 30px;
+    height: 100%;
 }
 
-form textarea {
-    border: 1px solid black;
+.form-container {
+    display: flex;
+    font-family: "Roboto",
+    "Droid Sans",
+    "Segoe UI",
+    "Helvetica",
+    Arial,
+    sans-serif;
+    background-color: white;
+}
+
+.side-bar-info-container {
+    margin: 0 30px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 100px;
+}
+
+.form-container form input {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
     margin-left: 7px;
+    width: 100%;
+}
+
+.form-container form textarea {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    margin-left: 7px;
+    width: 100%;
+}
+
+.form-container label {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.create-a-listing-header p {
+    font-size: 12px;
+}
+
+.create-a-listing-header h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.create-a-listing-header h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+#top-label {
+    margin-top: 100px;
 }

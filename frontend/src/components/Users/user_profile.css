@@ -1,3 +1,7 @@
+.outer-profile-container {
+    height: 100%;
+}
+
 .user-profile-container {
     display: flex;
     margin: 30px 18px;
@@ -127,6 +131,12 @@
     background-color: rgb(255, 136, 57);
 }
 
-#products-and-reviews.hidden {
+#products-and-reviews.hidden .form-container {
     opacity: 0;
+}
+
+#products-and-reviews {
+    background-color: rgba(247, 236, 212, 0.911);
+    height: 100%;
+    padding-top: 30px;
 }
