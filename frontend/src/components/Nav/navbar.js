@@ -62,7 +62,9 @@ class NavBar extends React.Component {
     return (
       <div className="navbar">
         <div className="top-navbar-buttons">
-          <h1 className="etsy-header">Etsy</h1>
+          {/* <h1 className="etsy-header">Getsy</h1> */}
+          <Link to="/products" className="etsy-header"> Getsy</Link>
+          
           <div className="right-hand-buttons">
             {this.getButtons()}
             <div className="shopping-cart-container">
