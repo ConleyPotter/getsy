@@ -3,8 +3,26 @@ import {Link} from 'react-router-dom'
 import './user_profile.css'
 class UserProfile extends React.Component{
 
+    constructor(props) {
+      super(props);
+      this.state = {
+        active: ''
+      };
+
+      this.addActiveClass = this.addActiveClass.bind(this);
+    }
+
     componentDidMount(){
-        this.props.fetchUser(this.props.match.params.user_id)
+      this.props.fetchUser(this.props.match.params.user_id)
+    }
+
+    addActiveClass(e) {
+      const clicked = e.target.id;
+      if (this.state.active === clicked) {
+        this.setState({active: ''});
+      }  else {
+        this.setState({active: clicked})
+      }
     }
 
     render(){
@@ -56,28 +74,34 @@ class UserProfile extends React.Component{
               </div>
             </div>
             <div className="more-info-container">
-              <button>
+              <button
+                onClick={this.addActiveClass}
+                className={`number-of-reviews ${this.state.active === "first" ? "active" : ""}`}
+                id="first"
+              >
                 <h2>
                   Reviews
-                  <span className="number-of-reviews">
-                    {numberOfReviews}
-                  </span>
+                  <span>{numberOfReviews || 0}</span>
                 </h2>
               </button>
-              <button>
+              <button
+                onClick={this.addActiveClass}
+                className={`number-of-products-sold ${this.state.active === "second" ? "active" : ""}`}
+                id="second"
+              >
                 <h2>
-                  <span className="number-of-products-sold">
-                    {numberOfProductsSold}
-                  </span>
                   Products Sold
+                  <span>{numberOfProductsSold || 0}</span>
                 </h2>
               </button>
-              <button>
+              <button
+                onClick={this.addActiveClass}
+                className={`number-of-products-on-sale ${this.state.active === "third" ? "active" : ""}`}
+                id="third"
+              >
                 <h2>
-                  <span className="number-of-products-on-sale">
-                    {numberOfProductsOnSale}
-                  </span>
                   Products on Sale
+                  <span>{numberOfProductsOnSale || 0}</span>
                 </h2>
               </button>
             </div>
