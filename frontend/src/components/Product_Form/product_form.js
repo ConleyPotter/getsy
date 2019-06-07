@@ -63,9 +63,7 @@ class ProductForm extends React.Component {
                 </div>
                 <div className="create-a-listing-header">
                   <h3>Description</h3>
-                  <p>
-                    Tell your buyers what to expect
-                  </p>
+                  <p>Tell your buyers what to expect</p>
                 </div>
                 <div className="create-a-listing-header">
                   <h3>Category</h3>
@@ -97,12 +95,44 @@ class ProductForm extends React.Component {
                   onChange={this.onChange("description")}
                 />
                 <label>category</label>
+                <select 
+                    name="category" 
+                    value={this.state.category}
+                    onChange={this.onChange("category")}
+                >
+                  <option value="jewlery_and_accessories">
+                    Jewelry & Accessories
+                  </option>
+                  <option value="clothing_and_shoes">
+                    Clothing and Shoes
+                  </option>
+                  <option value="home_and_living">
+                    Home and Living
+                  </option>
+                  <option value="wedding_and_party">
+                    Wedding and Party
+                  </option>
+                  <option value="toys_and_entertainment">
+                    Toys and Entertainment
+                  </option>
+                  <option value="art_and_collectibles">
+                    Art and Collectibles
+                  </option>
+                  <option value="craft_supplies">
+                    Craft Supplies
+                  </option>
+                  <option value="vintage">
+                    Vintage
+                  </option>
+                  <option value="gifts">
+                    Gifts
+                  </option>
+                </select>
                 <input
-                  type="text"
-                  value={this.state.category}
-                  onChange={this.onChange("category")}
+                  id="product-submit"
+                  type="submit"
+                  value="Submit"
                 />
-                <input type="submit" value="Product up" />
               </form>
             </div>
           </div>
