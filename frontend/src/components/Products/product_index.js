@@ -11,8 +11,14 @@ class ProductIndex extends React.Component {
     ]
   }
 
-  componentDidUpdate(){
-    // redirect to next category 
+  componentDidUpdate(prevProps){
+     if(this.props.indextype === "categories" && this.props.match.params.category !== prevProps.match.params.category){
+      this.props.clearProducts();
+      this.props.fetch(this.props.match.params.category);
+     } else if(this.props.indextype === "user" && this.props.match.params.user_id !== prevProps.match.params.user_id) {
+      this.props.clearProducts();
+      this.props.fetch(this.props.match.params.user_id);
+     } 
   }
 
   componentDidMount(){
