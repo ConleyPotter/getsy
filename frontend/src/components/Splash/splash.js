@@ -4,11 +4,60 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './splash.css'
 import etsyCheck from './etsyCheck.png';
-// import dadEtsy from './dadEtsyImg.png';
-// import makeBelieve from './makeBelieveEtsyImg.png';
+/* eslint no-undef: 0 */ // --> OFF
 
 class Splash extends React.Component {
+
+  // componentDidMount() {
+  //   (() => {
+  //     document.getElementById("file-input").onchange = () => {
+  //       const files = document.getElementById('file-input').files;
+  //       const file = files[0];
+  //       if (file == null) {
+  //         return alert('No file selected.');
+  //       }
+  //       this.getSignedRequest(file);
+  //     }
+  //   })();
+  // }
+
+  // uploadFile(file, signedRequest, url) {
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.open('PUT', signedRequest);
+  //   xhr.onreadystatechange = () => {
+  //     if (xhr.readyState === 4) {
+  //       if (xhr.status === 200) {
+  //         document.getElementById('preview').src = url;
+  //         document.getElementById('avatar-url').value = url;
+  //       }
+  //       else {
+  //         alert('Could not upload file.');
+  //       }
+  //     }
+  //   };
+  //   xhr.send(file);
+  // }
+
+  // getSignedRequest(file) {
+  //   let xhr = new XMLHttpRequest();
+  //   xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  //   xhr.onreadystatechange = () => {
+  //     if(xhr.readyState === 4){
+  //       if(xhr.status === 200){
+  //         const response = JSON.parse(xhr.responseText);
+  //         this.uploadFile(file, response.signedRequest, response.url);
+  //       } else{
+  //         alert('Could not get signed URL.');
+  //       }
+  //     }
+  //   };
+  //   xhr.send();
+  // }
+
+
+
   render() {
+
     return (
       <div className="splash">
         <h1 className="splash-header">
@@ -74,6 +123,18 @@ class Splash extends React.Component {
             </div>
           </div>
         </div>
+        {/* <div>
+          <input type="file" id="file-input"/>
+            <p id="status">Please select a file</p>
+            <img id="preview" src="/images/default.png"/>
+
+          <form method="POST" action="/save-details">
+            <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png"/>
+            <input type="text" name="username" placeholder="Username"/><br/>
+            <input type="text" name="full-name" placeholder="Full name"/><br/>
+            <input type="submit" value="Update profile"/>
+          </form>
+        </div> */}
       </div>
     );
   }

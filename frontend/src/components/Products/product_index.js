@@ -1,18 +1,11 @@
 import React from 'react';
 import ProductIndexItem from './product_index_item'
 import './product_index.css'
-import leicaImg from './leica.jpg';
 
 class ProductIndex extends React.Component {
-  constructor(props) {
-    super(props)
-    this.images = [
-      soupsImg, avocadosImg, cameraImg, glassesImg, recordPlayerImg, leicaImg, teacupsImg
-    ]
-  }
 
   componentDidMount(){
-    if (this.props.indextype == 'user'){
+    if (this.props.indextype === 'user'){
       this.props.clearProducts();
       this.props.fetch(this.props.match.params.user_id);
     } else {
@@ -22,12 +15,9 @@ class ProductIndex extends React.Component {
 
   renderProducts(){
     const products = this.props.products.map(product => {
-      // this.images.forEach(img => {
         return (
-          // <ProductIndexItem key={product._id} product={product} img={img}/>
           <ProductIndexItem key={product._id} product={product} />
         )
-      // })
     })
     return products
   }
