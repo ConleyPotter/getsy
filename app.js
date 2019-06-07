@@ -47,73 +47,69 @@ if (process.env.NODE_ENV === "production") {
 
 // AWS //
 // aws.config.region = 'us-west-2';
-aws.config.update({ region: 'us-west-2', 
-  accessKeyId: ACCESSKEYID, 
-  secretAccessKey: SECRETACCESSKEY })
+// aws.config.update({ region: 'us-west-2', 
+//   accessKeyId: ACCESSKEYID, 
+//   secretAccessKey: SECRETACCESSKEY })
 
-// aws.config.update("AKIAYDS34JFRKYL6KQ4Q", "R3B84E9WodZsDf5mFgREutxJ166tT7c3J/H39TZK");
-const S3_BUCKET = process.env.S3_BUCKET;
-
-// this is hardcoded but should be like line 53
-// const S3_BUCKET = 'getsy-app'
+// const S3_BUCKET = process.env.S3_BUCKET;
 
 // respond to GET requests to '/' - this will need to be updated to the profile page
 // upon request, render the 'splash.js' page
-app.get('/', (req, res) => res.render('splash.js'));
+// app.get('/', (req, res) => res.render('splash.js'));
 
-//  * Respond to GET requests to / sign - s3.
-//  * Upon request, return JSON containing the temporarily - signed S3 request and
-  // * the anticipated URL of the image.
-//  * /
-app.get('/sign-s3', (req, res) => {
-  const s3 = new aws.S3();
-  const fileName = req.query['file-name'];
-  const fileType = req.query['file-type'];
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
+// Respond to GET requests to / sign - s3.
+// Upon request, return JSON containing the temporarily - signed S3 request and
+// the anticipated URL of the image.
+//  /
+// app.get('/sign-s3', (req, res) => {
+//   const s3 = new aws.S3();
+//   const fileName = req.query['file-name'];
+//   const fileType = req.query['file-type'];
+//   const s3Params = {
+//     Bucket: S3_BUCKET,
+//     Key: fileName,
+//     Expires: 60,
+//     ContentType: fileType,
+//     ACL: 'public-read'
+//   };
 
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.end();
-    }
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    };
-    res.write(JSON.stringify(returnData));
-    res.end();
-  });
+//   s3.getSignedUrl('putObject', s3Params, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//       return res.end();
+//     }
+//     const returnData = {
+//       signedRequest: data,
+//       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+//     };
+//     res.write(JSON.stringify(returnData));
+//     res.end();
+//   });
 
-});
+// });
 
-app.post('/save-details', (req, res) => {
-  const s3 = new aws.S3();
-  const fileName = req.query['file-name'];
-  // const fileName = "image";
-  const fileType = req.query['file-type'];
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.end();
-    }
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    };
-    res.write(JSON.stringify(returnData));
-    res.end();
-  });
-});
+// app.post('/save-details', (req, res) => {
+//   const s3 = new aws.S3();
+//   const fileName = req.query['file-name'];
+//   // const fileName = "image";
+//   const fileType = req.query['file-type'];
+//   const s3Params = {
+//     Bucket: S3_BUCKET,
+//     Key: fileName,
+//     Expires: 60,
+//     ContentType: fileType,
+//     ACL: 'public-read'
+//   };
+//   s3.getSignedUrl('putObject', s3Params, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//       return res.end();
+//     }
+//     const returnData = {
+//       signedRequest: data,
+//       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+//     };
+//     res.write(JSON.stringify(returnData));
+//     res.end();
+//   });
+// });
