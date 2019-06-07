@@ -51,24 +51,29 @@ class ProductIndex extends React.Component {
     }
   }
 
-  renderProducts(){
-    const products = this.props.products.map(product => {
-      this.productImages.forEach(img => {
-        return (
-          <ProductIndexItem key={product._id} product={product} img={img} />
-        )
-      })
-    })
-    return products
+  addRandomImg() {
+    return this.productImages[Math.floor(Math.random() * this.productImages.length)]
   }
 
+  renderProducts(){
+    // return products
+  }
+  
   render() {
+    const products = this.props.products.map(product => {
+      // this.productImages.forEach(img => {
+        return (
+          <ProductIndexItem key={product._id} product={product} img={this.addRandomImg()}/>
+        )
+      // })
+    })
     return (
       <div>
         <h1 className="product-index-category">Category Name</h1>
         <div className="product-index-container">
           <ul className="product-index-ul">
-            {this.renderProducts()}
+            {/* {this.renderProducts()} */}
+            {products}
           </ul>
         </div>
       </div>
