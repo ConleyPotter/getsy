@@ -3,6 +3,7 @@ import {
 	RECEIVE_PRODUCT,
 	RECEIVE_USER_PRODUCTS,
 	RECEIVE_PRODUCT_OWNER,
+	RECEIVE_CATEGORY_PRODUCTS,
 	CLEAR_PRODUCTS
 } from "../actions/product_actions";
 
@@ -31,6 +32,17 @@ const ProductsReducer = (
 			
 			return Object.assign({}, state, {[action.product.data.product._id]: action.product.data })
 			
+			
+		case RECEIVE_CATEGORY_PRODUCTS:
+      let tempObj = {};
+      let categoryProducts = action.products.data;
+      
+      Object.keys(categoryProducts).forEach(product => {
+        tempObj[categoryProducts[product]._id] =
+          categoryProducts[product];
+      });
+
+			return Object.assign({}, newState, tempObj);
 			
 		case RECEIVE_USER_PRODUCTS:
 			

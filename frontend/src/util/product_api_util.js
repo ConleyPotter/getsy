@@ -22,3 +22,7 @@ export const createProduct = data => {
 export const getProductOwner = user_id => {
 	return axios.get(`api/users/u/${user_id}`);
 }
+
+export const getProductsByCategory = category => {
+  return axios.get(`/api/products/cat/${category}`)
+};
