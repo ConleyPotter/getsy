@@ -1,12 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import soupsImg from './soups.jpg';
-import avocadosImg from './avocados.jpg';
-import cameraImg from './camera.jpg';
-import glassesImg from './glasses.jpg';
-import recordPlayerImg from './recordPlayer.jpg';
 import leicaImg from './leica.jpg';
-import teacupsImg from './teacups.jpg';
 
 
 class ProductIndexItem extends React.Component {
