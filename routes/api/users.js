@@ -4,6 +4,7 @@ const router = express.Router();
 // Model
 const User = require("../../models/User");
 const Product = require("../../models/Product");
+const ShoppingCart = require("../../models/Shopping_cart")
 
 // Password config
 const bcrypt = require('bcryptjs');
