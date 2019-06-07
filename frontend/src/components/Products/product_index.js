@@ -53,11 +53,11 @@ class ProductIndex extends React.Component {
 
   renderProducts(){
     const products = this.props.products.map(product => {
-      this.productImages.forEach(img => {
+      
         return (
-          <ProductIndexItem key={product._id} product={product} img={img} />
+          <ProductIndexItem key={product._id} product={product} img={this.productImages[0]} />
         )
-      })
+      
     })
     return products
   }

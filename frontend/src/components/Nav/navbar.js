@@ -67,10 +67,12 @@ class NavBar extends React.Component {
           
           <div className="right-hand-buttons">
             {this.getButtons()}
+              <Link to={`/cart/${this.props.currentUser.id}`} >
             <div className="shopping-cart-container">
-              <span className="fas fa-shopping-cart" />
-              Cart
+                <span className="fas fa-shopping-cart" />
+                Cart
             </div>
+              </Link>
           </div>
         </div>
         <div className="bottom-navbar-category-buttons">

@@ -9,8 +9,8 @@ import "./app.css";
 
 import ProductIndexContainer from "./Products/product_index_container";
 import ProductUserContainer from "./Products/product_user_index_container";
-
-import ProductShowContainer from './Product_Show/product_show_container'
+import ProductShowContainer from './Product_Show/product_show_container';
+import CartIndexContainer from './Cart/cart_index_container';
 import "./app.css";
 
 const App = () => (
@@ -18,6 +18,7 @@ const App = () => (
 		<Modal />
 		<NavBarContainer />
 		<Switch>
+			<ProtectedRoute exact path="/cart/:user_id" component={CartIndexContainer} />
 			<ProtectedRoute exact path="/products/:product_id" component={ProductShowContainer} />
 			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
       <ProtectedRoute exact path="/products" component={ProductIndexContainer} />
