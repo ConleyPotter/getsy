@@ -126,3 +126,7 @@
 .more-info-container .create-product-btn:hover {
     background-color: rgb(255, 136, 57);
 }
+
+#products-and-reviews.hidden {
+    opacity: 0;
+}

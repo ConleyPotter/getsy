@@ -1,15 +1,17 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import ProductForm from '../Product_Form/product_create_container'
 import './user_profile.css'
 class UserProfile extends React.Component{
 
     constructor(props) {
       super(props);
       this.state = {
-        active: ''
+        active: '',
+        createClicked: "hidden"
       };
 
       this.addActiveClass = this.addActiveClass.bind(this);
+      this.renderProductForm = this.renderProductForm.bind(this);
     }
 
     componentDidMount(){
@@ -22,6 +24,18 @@ class UserProfile extends React.Component{
         this.setState({active: ''});
       }  else {
         this.setState({active: clicked})
+      }
+    }
+
+    renderProductForm() {
+      if (this.state.createClicked === "product-form") {
+        this.setState({
+          createClicked: "hidden"
+        })
+      } else {
+        this.setState({
+          createClicked: "product-form"
+        })
       }
     }
 
@@ -110,9 +124,18 @@ class UserProfile extends React.Component{
                   <span>{numberOfProductsOnSale || 0}</span>
                 </h2>
               </button>
-              <Link to="/products/new" className="create-product-btn">
+              <button
+                onClick={this.renderProductForm}
+                className="create-product-btn"
+              >
                 Create a product
-              </Link>
+              </button>
+            </div>
+            <div
+              id="products-and-reviews"
+              className={this.state.createClicked}
+            >
+              <ProductForm />
             </div>
           </div>
         );

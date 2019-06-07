@@ -42,7 +42,7 @@ class ProductForm extends React.Component {
             <div>
                 <div className="form-container">
                     {this.renderErrors()}
-                    <form onSubmit={this.handleSubmit}> 
+                    <form className="create-or-destroy" onSubmit={this.handleSubmit}> 
                         <label>
                             name
                         </label>
