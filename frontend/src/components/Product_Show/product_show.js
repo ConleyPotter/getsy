@@ -23,7 +23,7 @@ class ProductShow extends React.Component{
         return (
           <div>
             <div className="product-detail-container">
-              <img src={leicaImg} className="product-show-img"/>
+              <img src={`https://getsy-app.s3-us-west-2.amazonaws.com/alarm-clock-analog-analogue-1065712.jpg`} className="product-show-img"/>
               <div className="product-details">
                 <div className="product-detail-name">{this.props.product.name}</div>
                 <div className="product-detail-price">${this.props.product.price}</div>
