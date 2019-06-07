@@ -76,7 +76,9 @@ class UserProfile extends React.Component{
             <div className="more-info-container">
               <button
                 onClick={this.addActiveClass}
-                className={`number-of-reviews ${this.state.active === "first" ? "active" : ""}`}
+                className={`number-of-reviews ${
+                  this.state.active === "first" ? "active" : ""
+                }`}
                 id="first"
               >
                 <h2>
@@ -86,7 +88,9 @@ class UserProfile extends React.Component{
               </button>
               <button
                 onClick={this.addActiveClass}
-                className={`number-of-products-sold ${this.state.active === "second" ? "active" : ""}`}
+                className={`number-of-products-sold ${
+                  this.state.active === "second" ? "active" : ""
+                }`}
                 id="second"
               >
                 <h2>
@@ -96,7 +100,9 @@ class UserProfile extends React.Component{
               </button>
               <button
                 onClick={this.addActiveClass}
-                className={`number-of-products-on-sale ${this.state.active === "third" ? "active" : ""}`}
+                className={`number-of-products-on-sale ${
+                  this.state.active === "third" ? "active" : ""
+                }`}
                 id="third"
               >
                 <h2>
@@ -104,10 +110,10 @@ class UserProfile extends React.Component{
                   <span>{numberOfProductsOnSale || 0}</span>
                 </h2>
               </button>
+              <Link to="/products/new" className="create-product-btn">
+                Create a product
+              </Link>
             </div>
-            <Link to="/products/new" className="create-product-btn">
-              Create a product
-            </Link>
           </div>
         );
     }
