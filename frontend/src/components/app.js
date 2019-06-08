@@ -4,19 +4,28 @@ import { Switch } from "react-router-dom";
 import NavBarContainer from "./Nav/navbar_container";
 import Splash from "./Splash/splash";
 import Modal from "./Modal/modal";
-import "./app.css";
 
 import ProductIndex from "./Products/product_index";
+import UserProfileContainer from './Users/user_profile_container'
+import ProductIndexContainer from "./Products/product_index_container";
+import ProductUserContainer from "./Products/product_user_index_container";
+import ProductShowContainer from './Product_Show/product_show_container'
+import ProductCreateContainer from './Product_Form/product_create_container'
 
+import './app.css'
 const App = () => (
   <div>
     <Modal />
     <NavBarContainer />
     <Switch>
-      <ProtectedRoute exact path="/products" component={ProductIndex} />
+      <ProtectedRoute exact path="/products/new" component={ProductCreateContainer} />
+			<ProtectedRoute exact path="/products/:product_id" component={ProductShowContainer} />
+			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
+			<ProtectedRoute exact path="/products" component={ProductIndexContainer} />
+      <ProtectedRoute path="/users/:user_id" component={UserProfileContainer} />
       <AuthRoute exact path="/" component={Splash} />
     </Switch>
   </div>
-);
+)
 
-export default App;
+export default App; 

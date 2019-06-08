@@ -3,6 +3,8 @@ const router = express.Router();
 
 // Model
 const User = require("../../models/User");
+const Product = require("../../models/Product");
+// const ShoppingCart = require("../../models/Shopping_cart")
 
 // Password config
 const bcrypt = require('bcryptjs');
@@ -26,9 +28,22 @@ router.get("/success", passport.authenticate('jwt', {session: false}), (req, res
         fName: req.user.fName
     });
 })
+//user show////
+router.get("/u/:user_id", (req, res)=>{
+    User.findById(req.params.user_id)
+    .then(user => {
+        res.json({
+            id: user.id,
+            email: user.email,
+            fName: user.fName
+        });
+    })
+    .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
+})
+
 ////USER CREATE/////////////  
 router.post('/register', (req,res)=>{
-    const {errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid){
         return res.status(400).json(errors);
@@ -114,6 +129,15 @@ router.post("/login", (req,res)=> {
     })
 
 })
+///finds user's product
+router.get('/:user_id', (req, res) => {
+    Product.find({ owner_id: req.params.user_id })
+      .then(products => res.json(products))
+      .catch(err =>
+        res.status(404).json({ noproductsfound: 'No products found from that user' }
+        )
+      );
+  })
 
 router.get('/:user_id', (req, res) => {
   Product.find({ owner_id: req.params.user_id })
@@ -122,6 +146,14 @@ router.get('/:user_id', (req, res) => {
       res.status(404).json({ noproductsfound: 'No products found from that user' }
       )
     );
+})
+
+router.get("/u", (req, res) => {
+  User.find({}, 'fName email _id date')
+  .then(users => {
+    res.json(users) 
+  })
+  .catch(err => res.status(404).json({nouser: "no user found"}))
 })
 
 // find a user by user_id
