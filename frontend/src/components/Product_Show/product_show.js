@@ -10,7 +10,9 @@ class ProductShow extends React.Component{
         this.state= {
             notFound: false,
             errorMessage: "",
-            showDeleteButton: false
+            showDeleteButton: false,
+            showDeletionError: false,
+            showDeletionSuccess: false
         }
         this.handleDelete = this.handleDelete.bind(this)
     }
@@ -25,9 +27,13 @@ class ProductShow extends React.Component{
     }
 
     handleDelete(e) {
-      debugger
+      e.preventDefault()
       this.props.deleteProduct(this.props.product._id)
-      this.props.history.push('/products')
+        .then(this.setState({ showDeletionSuccess: true }))
+        .then(setTimeout(this.props.history.push('/products'), 5000))
+      // if (this.props.errors) {
+      //   this.state.showDeletionError = true 
+      // } 
     }
 
     render(){
@@ -46,6 +52,28 @@ class ProductShow extends React.Component{
           Delete this item
         </button>
       } 
+
+      let deletionError;
+      if (this.state.showDeletionError === true) {
+        deletionError = 
+        <div>
+          <label className="prod-deletion-error">
+            There was a problem with your request. Please try again.
+          </label>
+          <div 
+            className="prod-deletion-error-ok"
+            onClick={this.state.showDeletionError === false}>
+            OK
+          </div>
+        </div>
+      }
+
+      let deletionSuccess;
+      if (this.state.showDeletionSuccess === true) {
+        deletionSuccess = <label className="prod-deletion-error">
+          This product was deleted succesfully.
+        </label>
+      }
     
         return (
           <div>
@@ -57,6 +85,8 @@ class ProductShow extends React.Component{
                 <div className="product-detail-price">${product.price}</div>
                 <button className="add-to-basket-button">Add to basket</button>
                 {deleteButton}
+                {deletionError}
+                {deletionSuccess}
                 <div className="product-detail-description">{product.description}</div>
               </div>
             </div>

@@ -97,7 +97,6 @@ export const fetchProductOwner = user_id => dispatch => {
 }
 
 export const deleteProduct = product_id => dispatch => {
-  debugger
   return ProductUtils.deleteProduct(product_id)
   .then(product_id => dispatch(removeProduct(product_id)))
   .catch(err => dispatch(receiveErrors(err.response.data)))

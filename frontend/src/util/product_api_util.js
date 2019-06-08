@@ -24,6 +24,5 @@ export const getProductOwner = user_id => {
 }
 
 export const deleteProduct = product_id => {
-  debugger
   return axios.delete(`api/products/${product_id}`);
 }
