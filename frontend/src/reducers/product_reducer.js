@@ -3,7 +3,8 @@ import {
 	RECEIVE_PRODUCT,
 	RECEIVE_USER_PRODUCTS,
 	RECEIVE_PRODUCT_OWNER,
-	CLEAR_PRODUCTS
+  CLEAR_PRODUCTS, 
+  DELETE_PRODUCT
 } from "../actions/product_actions";
 
 const ProductsReducer = (
@@ -42,7 +43,12 @@ const ProductsReducer = (
 			return Object.assign({}, state, obj)
 		case CLEAR_PRODUCTS:
 			newState = {}
-			return Object.assign({},newState)
+      return Object.assign({},newState)
+      
+    case DELETE_PRODUCT: 
+      newState = Object.assign({}, state);
+      delete newState[action.product_id];
+      return newState;
 		default:
 			return state;
 	}

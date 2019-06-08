@@ -22,3 +22,8 @@ export const createProduct = data => {
 export const getProductOwner = user_id => {
 	return axios.get(`api/users/u/${user_id}`);
 }
+
+export const deleteProduct = product_id => {
+  debugger
+  return axios.delete(`api/products/${product_id}`);
+}

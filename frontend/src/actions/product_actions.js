@@ -6,6 +6,7 @@ export const RECEIVE_USER_PRODUCTS = "RECEIVE_USER_PRODUCTS";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_PRODUCT_OWNER = "RECEIVE_PRODUCT_OWNER"
 export const CLEAR_PRODUCTS = "CLEAR_PRODUCTS"
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 export const receiveProducts = products => {
 	return {
@@ -54,6 +55,11 @@ export const clearErrors = () => ({
 	type: "CLEAR_ERRORS"
 });
 
+export const removeProduct = product_id => ({
+  type: "DELETE_PRODUCT",
+  product_id
+});
+
 export const fetchProducts = () => dispatch => {
 	return ProductUtils.getProducts()
 		.then(products => {
@@ -88,4 +94,11 @@ export const fetchProductOwner = user_id => dispatch => {
 	return ProductUtils.getProductOwner(user_id)
 	.then(user => dispatch(receiveProductOwner(user)))
 	.catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const deleteProduct = product_id => dispatch => {
+  debugger
+  return ProductUtils.deleteProduct(product_id)
+  .then(product_id => dispatch(removeProduct(product_id)))
+  .catch(err => dispatch(receiveErrors(err.response.data)))
 }

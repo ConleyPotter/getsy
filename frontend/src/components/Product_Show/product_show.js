@@ -1,7 +1,7 @@
 import React from 'react'
 import './product_show.css';
 import leicaImg from './leica.jpg';
-
+import { Redirect } from 'react-router'
 
 class ProductShow extends React.Component{
 
@@ -12,6 +12,7 @@ class ProductShow extends React.Component{
             errorMessage: "",
             showDeleteButton: false
         }
+        this.handleDelete = this.handleDelete.bind(this)
     }
     componentDidMount(){
       this.props.fetchProduct(this.props.match.params.product_id);
@@ -21,6 +22,12 @@ class ProductShow extends React.Component{
       if(prevProps.match.params.product_id !== this.props.match.params.product_id){
         this.props.fetchProduct(this.props.match.params.product_id);
       }
+    }
+
+    handleDelete(e) {
+      debugger
+      this.props.deleteProduct(this.props.product._id)
+      this.props.history.push('/products')
     }
 
     render(){
@@ -33,7 +40,11 @@ class ProductShow extends React.Component{
 
       let deleteButton;
       if (this.state.showDeleteButton === true) {
-        deleteButton = <button className="delete-product-button">Delete this item</button>
+        deleteButton = <button 
+          className="delete-product-button"
+          onClick={this.handleDelete}>
+          Delete this item
+        </button>
       } 
     
         return (
