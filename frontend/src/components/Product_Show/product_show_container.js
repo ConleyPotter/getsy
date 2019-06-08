@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     }
     return {
         product: state.products[ownProps.match.params.product_id].product,
-        user: state.products[ownProps.match.params.product_id].user
+        user: state.products[ownProps.match.params.product_id].user,
+        currentUser: state.session.user
     }
 }
 

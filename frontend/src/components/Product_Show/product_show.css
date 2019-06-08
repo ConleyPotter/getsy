@@ -47,9 +47,23 @@
 .add-to-basket-button {
   height: 40px;
   width: 300px;
-  margin: 50px 0;
+  margin-top: 50px;
   background-color: #272727;
   color: white;
   font-size: medium;
   border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.delete-product-button {
+  height: 40px;
+  width: 300px;
+  margin-top: 25px;
+  background-color: #ffffff;
+  color: red;
+  font-size: medium;
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
 }
