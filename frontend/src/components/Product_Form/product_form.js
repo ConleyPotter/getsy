@@ -82,17 +82,20 @@ class ProductForm extends React.Component {
                   type="text"
                   value={this.state.name}
                   onChange={this.onChange("name")}
+                  className="form-input"
                 />
                 <label>price</label>
                 <input
                   type="number"
                   value={this.state.price}
                   onChange={this.onChange("price")}
+                  className="form-input"
                 />
                 <label>description</label>
                 <textarea
                   value={this.state.description}
                   onChange={this.onChange("description")}
+                  className="form-input-text-area"
                 />
                 <label>category</label>
                 <select 
