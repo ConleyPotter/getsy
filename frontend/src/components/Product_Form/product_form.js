@@ -37,7 +37,7 @@ class ProductForm extends React.Component {
 	}
 
     render(){
-        
+
         return (
           <div className="create-product-outer-container">
             <div className="form-container">

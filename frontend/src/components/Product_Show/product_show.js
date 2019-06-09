@@ -124,7 +124,7 @@ class ProductShow extends React.Component{
             <div 
               id="products-and-reviews"
               className={this.state.createClicked}>
-              <EditProductContainer />
+              <EditProductContainer product={this.props.product}/>
             </div>
           </div>
         )

@@ -18,11 +18,14 @@ class EditProductForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  product: state.products[0] || {},
-  formType: "edit",
-  errors: state.errors.product
-})
+const mapStateToProps = (state, ownProps) => {
+  return {
+    product: ownProps.product,
+    formType: "edit",
+    errors: state.errors.product
+
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   fetchProduct: product_id => dispatch(fetchProduct(product_id)),
