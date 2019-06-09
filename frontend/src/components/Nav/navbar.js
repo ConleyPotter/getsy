@@ -59,6 +59,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const cartLink = this.props.loggedIn ? `/cart/${this.props.currentUser.id}` : "/"
     return (
       <div className="navbar">
         <div className="top-navbar-buttons">
@@ -67,7 +68,7 @@ class NavBar extends React.Component {
           
           <div className="right-hand-buttons">
             {this.getButtons()}
-              <Link to={`/cart/${this.props.currentUser.id}`} >
+              <Link to={cartLink} >
             <div className="shopping-cart-container">
                 <span className="fas fa-shopping-cart" />
                 Cart
