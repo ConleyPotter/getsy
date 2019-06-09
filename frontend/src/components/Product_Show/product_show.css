@@ -56,14 +56,34 @@
   text-align: center;
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
 .delete-product-button {
   height: 40px;
-  width: 300px;
+  width: 125px;
   margin-top: 25px;
   background-color: #ffffff;
-  color: red;
-  font-size: medium;
+  color: rgb(145, 34, 34);
+  font-size: 14px;
   border-radius: 5px;
   font-family: sans-serif;
   text-align: center;
+  border: 1px solid rgb(193, 193, 193);
+}
+
+.edit-product-button {
+  height: 40px;
+  width: 125px;
+  margin-top: 25px;
+  background-color: #ffffff;
+  color: rgb(145, 34, 34);
+  font-size: 14px;
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid rgb(193, 193, 193);
 }

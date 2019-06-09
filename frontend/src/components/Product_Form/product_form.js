@@ -31,7 +31,7 @@ class ProductForm extends React.Component {
 			<ul>
 				{Object.keys(this.props.errors).map((error, i) => (
 					<li key={`error-${i}`}>{this.props.errors[error]}</li>
-				))}
+        ))}
 			</ul>
 		);
 	}

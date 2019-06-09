@@ -11,7 +11,8 @@ const msp = state => {
             category: ""
         },
         currentUser: state.session.user,
-        errors: state.errors.product
+        errors: state.errors.product,
+        formType: "new"
     }
 }
 
