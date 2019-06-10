@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import leicaImg from './leica.jpg';
+// import leicaImg from './leica.jpg';
 
 
 class ProductIndexItem extends React.Component {
@@ -10,7 +10,7 @@ class ProductIndexItem extends React.Component {
           <div className="product-link-container">
             <Link to={`/products/${this.props.product._id}`}
               className="link-container">
-              <img src={`this.props.img`} className="img" />
+              <img src={this.props.img} className="img" />
               {/* <img src={leicaImg} className="img"/> */}
               <div className="product-label-container">
                 <div className="product-name">{this.props.product.name}</div>
