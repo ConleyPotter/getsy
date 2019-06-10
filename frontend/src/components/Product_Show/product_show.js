@@ -35,10 +35,11 @@ class ProductShow extends React.Component{
       this.props.deleteProduct(this.props.product._id)
         .then((res) => {
           if (res.type === "DELETE_PRODUCT") {
-            this.renderDeleteSuccess()
-            setTimeout(() => this.props.history.push('/products'), 5000)
+            this.props.openModal('deleteSuccess')
+            // setTimeout(() => this.props.closeModal, 4000)
+            // setTimeout(() => this.props.history.push('/products'), 5000)
           } else {
-            this.setState({ showDeletionError: true })
+            this.props.openModal('deleteError')
           }
         })
     }
@@ -84,28 +85,6 @@ class ProductShow extends React.Component{
           Edit this item
         </button>
       }
-
-      let deletionError;
-      if (this.state.showDeletionError === true) {
-        deletionError = 
-        <div>
-          <label className="prod-deletion-error">
-            There was a problem with your request. Please try again.
-          </label>
-          <div 
-            className="prod-deletion-error-ok"
-            onClick={this.state.showDeletionError === false}>
-            OK
-          </div>
-        </div>
-      }
-
-      let deletionSuccess;
-      if (this.state.showDeletionSuccess === true) {
-        deletionSuccess = <label className="prod-deletion-error">
-          This product was deleted succesfully.
-        </label>
-      }
     
         return (
           <div>
@@ -120,8 +99,6 @@ class ProductShow extends React.Component{
                   {deleteButton}
                   {editButton}
                 </div>
-                {deletionError}
-                {deletionSuccess}
                 <div className="product-detail-description">{product.description}</div>
               </div>
             </div>
