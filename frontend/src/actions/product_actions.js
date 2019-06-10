@@ -109,6 +109,7 @@ export const deleteProduct = product_id => dispatch => {
 }
 
 export const editProduct = product => dispatch => {
+  debugger
   return ProductUtils.updateProduct(product)
   .then(product => dispatch(updateProduct(product)))
   .catch(err => dispatch(receiveErrors(err.response.data)))

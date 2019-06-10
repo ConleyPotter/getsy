@@ -95,17 +95,30 @@ router.post('/:category', (req, res) => {
     );
 });
 
+// router.patch("/:id", (req, res) => {
+//   Product.updateOne({_id: req.params.id}, {
+//     name: req.body.name,
+//     price: req.body.price,
+//     description: req.body.description,
+//     category: req.body.category
+//   }, {returnOriginal: false},
+//   product => res.json(product));
+// });
+
 router.patch("/:id", (req, res) => {
-  Product.updateOne({_id: req.params.id}, {
-    name: req.body.name,
-    price: req.body.price,
-    description: req.body.description,
-    owner_id: req.params.owner_id,
-    date: req.body.date,
-    category: req.body.category
-  },
+  Product.updateOne({_id: req.params.id}, 
+    {$set: 
+      {
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        category: req.body.category
+      }
+    }, {returnOriginal: false},
   product => res.json(product));
 });
+
+
 
 router.delete("/:id", (req, res) => {
   Product.findByIdAndRemove(req.params.id, err => {

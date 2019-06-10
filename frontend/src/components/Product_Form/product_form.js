@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter, Link } from 'react-router-dom'
 import './product_form.css'
 class ProductForm extends React.Component {
 
@@ -17,13 +18,15 @@ class ProductForm extends React.Component {
     
     handleSubmit(e){
         e.preventDefault();
+      debugger
         this.props.action(this.state)
-        .then(product => {
-            if (product.product){
+          // .then(() => this.props.history.push(`/products/${this.state._id}`))
+        // .then(product => {
+        //     if (product.product){
 
-                this.props.history.push(`/products/${product.product._id}`);
-            }
-        })
+        //         this.props.history.push(`/products/${product.product._id}`);
+        //     }
+        // })
     }
 
     renderErrors() {
