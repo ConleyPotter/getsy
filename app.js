@@ -7,6 +7,7 @@ const path = require("path");
 const users = require("./routes/api/users");
 const products = require("./routes/api/products");
 const s3_route = require("./routes/s3")
+const shopping_cart = require("./routes/api/shopping_cart");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -32,6 +33,7 @@ app.use("/api/users", users);
 app.use("/api/products", products);
 app.use("/s3", s3_route);
 
+app.use("/api/cart", shopping_cart)
 
 // SERVER CONFIG //
 const port = process.env.PORT || 5000;
