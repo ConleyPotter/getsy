@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const Product = require("../models/Product")
+
 var AWS = require("aws-sdk");
 
 
@@ -23,7 +25,8 @@ var upload  = multer({storage: storage});
 
       var params = {
           Bucket: process.env.AWS_BUCKET,
-          Key: file.originalname,
+          //maybe append Date.now() to key will create unique
+          Key: Date.now() + file.originalname, 
           Body: file.buffer,
           ContentTypr: file.mimetype,
           ACL: "public-read"
@@ -36,16 +39,24 @@ var upload  = multer({storage: storage});
               
               var newFileUploaded = {
                   description: req.body.description,
-                  fileLink: s3FileURL + file.originalname
+                  fileLink: s3FileURL + params.Key
               };
 
             res.send({results: newFileUploaded, data: data})
-            //   var document = new DOCUMENT(newFileUploaded);
-            //     document.save(function(error, newFile) {
-            //         if (error) {
-            //         throw error;
-            //         }
-            //     });
+
+            // const newProduct = new Product({
+            //     name: "Test1",
+            //     price: 3.99,
+            //     description: "arbitrary",
+            //     owner_id: "5cf9871f4b2249404f447c2d",
+            //     date: Date.now(),
+            //     category: "random",
+            //     image_url: newFileUploaded.fileLink
+            //   });
+            //   newProduct.save()
+            //   .then(product => res.json(product))
+            //   .catch(err => res.status(400).json(err.message))
+            
           }
       })
   })
