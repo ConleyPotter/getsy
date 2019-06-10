@@ -1,6 +1,6 @@
 import React from 'react'
 import './product_show.css';
-import leicaImg from './leica.jpg';
+// import leicaImg from './leica.jpg';
 
 
 class ProductShow extends React.Component{
@@ -23,7 +23,7 @@ class ProductShow extends React.Component{
         return (
           <div>
             <div className="product-detail-container">
-              <img src={this.props.img} className="product-show-img"/>
+              <img src={null} className="product-show-img"/>
               <div className="product-details">
                 <div className="product-detail-name">{this.props.product.name}</div>
                 <div className="product-detail-price">${this.props.product.price}</div>
