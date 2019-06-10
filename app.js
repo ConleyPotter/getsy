@@ -5,6 +5,7 @@ const path = require("path");
 // Route imports
 const users = require("./routes/api/users");
 const products = require("./routes/api/products");
+const shopping_cart = require("./routes/api/shopping_cart");
 
 const app = express();
 const db = require('./config/keys').mongoURI;
@@ -28,6 +29,7 @@ require('./config/passport')(passport);
 // ROUTES //
 app.use("/api/users", users);
 app.use("/api/products", products);
+app.use("/api/cart", shopping_cart)
 
 // SERVER CONFIG //
 const port = process.env.PORT || 5000;

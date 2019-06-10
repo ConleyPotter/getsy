@@ -22,6 +22,9 @@ const ProductSchema = new Schema({
       "The user must exist."
     ],
     required: true
+    // dbl check; SM said this should have this as it's a foreign key,
+    // but just in case it breaks something.
+    // ref: 'users'
   },
   date: {
     type: Date,
