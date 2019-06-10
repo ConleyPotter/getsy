@@ -70,13 +70,13 @@ export const fetchProducts = () => dispatch => {
 	return ProductUtils.getProducts()
 		.then(products => {
 			
-			dispatch(receiveProducts(products))
+			dispatch(receiveProducts(products.data))
 		})
 		.catch(err => console.log(err));
 };
 export const fetchUserProducts = user_id => dispatch => {
 	return ProductUtils.getUserProducts(user_id)
-		.then(products => dispatch(receiveUserProducts(products)))
+		.then(products => dispatch(receiveUserProducts(products.data)))
 		.catch(err => console.log(err));
 };
 export const fetchProduct = product_id => dispatch => {
@@ -104,12 +104,11 @@ export const fetchProductOwner = user_id => dispatch => {
 
 export const deleteProduct = product_id => dispatch => {
   return ProductUtils.deleteProduct(product_id)
-  .then(product_id => dispatch(removeProduct(product_id)))
+  .then(() => dispatch(removeProduct(product_id)))
   .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
 export const editProduct = product => dispatch => {
-  debugger
   return ProductUtils.updateProduct(product)
   .then(product => dispatch(updateProduct(product)))
   .catch(err => dispatch(receiveErrors(err.response.data)))

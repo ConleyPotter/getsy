@@ -18,13 +18,17 @@ class ProductForm extends React.Component {
     
     handleSubmit(e){
         e.preventDefault();
-      debugger
         this.props.action(this.state)
-          // .then(() => this.props.history.push(`/products/${this.state._id}`))
+          .then((res) => {
+            if (res.type === "RECEIVE_PRODUCT") {
+              // this.props.history.push(`/products/${this.state._id}`);
+              this.props.fetchProduct(this.state._id)
+            }
+          })
         // .then(product => {
-        //     if (product.product){
-
-        //         this.props.history.push(`/products/${product.product._id}`);
+        //     if (product){
+        //         this.setState({product : product })
+        //         // this.props.history.push(`/products/${product._id}`);
         //     }
         // })
     }
@@ -146,4 +150,4 @@ class ProductForm extends React.Component {
     }
 }
 
-export default ProductForm
+export default withRouter(ProductForm)

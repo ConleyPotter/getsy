@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {createProduct} from '../../actions/product_actions'
+import {createProduct, fetchProduct} from '../../actions/product_actions'
 import ProductForm from './product_form'
 const msp = state => {
     return {
@@ -18,7 +18,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        action: (data) => dispatch(createProduct(data))
+        action: (data) => dispatch(createProduct(data)),
+        fetchProduct: product_id => dispatch(fetchProduct(product_id))
     }
 }
 

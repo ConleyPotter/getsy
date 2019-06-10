@@ -21,7 +21,7 @@ const ProductsReducer = (
 		case RECEIVE_PRODUCTS:
 			
 			let oj = {};
-			let products = action.products.data;
+			let products = action.products;
 			Object.keys(products).forEach((product)=> {
 				oj[products[product]._id] = products[product]
 			})

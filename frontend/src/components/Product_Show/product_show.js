@@ -18,6 +18,7 @@ class ProductShow extends React.Component{
         }
         this.handleDelete = this.handleDelete.bind(this);
         this.renderProductForm = this.renderProductForm.bind(this);
+        this.renderDeleteSuccess = this.renderDeleteSuccess.bind(this);
     }
     componentDidMount(){
       this.props.fetchProduct(this.props.match.params.product_id);
@@ -29,18 +30,17 @@ class ProductShow extends React.Component{
       }
     }
 
-    // deletion is working properly, I think it's somehow executing the .then
-    // before deleteProduct comes back? It re-routes to /products without 
-    // showing the deletionSuccess msg.
-    // was also trying to handle errors, but not tested this bit yet.
     handleDelete(e) {
       e.preventDefault()
       this.props.deleteProduct(this.props.product._id)
-        .then(this.setState({ showDeletionSuccess: true }))
-        .then(setTimeout(this.props.history.push('/products'), 5000))
-      // if (this.props.errors) {
-      //   this.state.showDeletionError = true 
-      // } 
+        .then((res) => {
+          if (res.type === "DELETE_PRODUCT") {
+            this.renderDeleteSuccess()
+            setTimeout(() => this.props.history.push('/products'), 5000)
+          } else {
+            this.setState({ showDeletionError: true })
+          }
+        })
     }
 
     renderProductForm() {
@@ -53,6 +53,10 @@ class ProductShow extends React.Component{
           createClicked: "product-form"
         })
       }
+    }
+
+    renderDeleteSuccess() {
+      this.setState({ showDeletionSuccess: true })
     }
 
     render(){
@@ -116,8 +120,8 @@ class ProductShow extends React.Component{
                   {deleteButton}
                   {editButton}
                 </div>
-                {/* {deletionError}
-                {deletionSuccess} */}
+                {deletionError}
+                {deletionSuccess}
                 <div className="product-detail-description">{product.description}</div>
               </div>
             </div>

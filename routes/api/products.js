@@ -101,7 +101,7 @@ router.post('/:category', (req, res) => {
 //     price: req.body.price,
 //     description: req.body.description,
 //     category: req.body.category
-//   }, {returnOriginal: false},
+//   }, 
 //   product => res.json(product));
 // });
 
@@ -115,7 +115,7 @@ router.patch("/:id", (req, res) => {
         category: req.body.category
       }
     }, {returnOriginal: false},
-  product => res.json(product));
+  product => res.json(product))
 });
 
 
@@ -123,7 +123,10 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   Product.findByIdAndRemove(req.params.id, err => {
     if (err) res.send(err);
-    else res.json({message: "Product has been deleted"});
+    else res.json({
+      
+      message: "Product has been deleted"
+    });
   });
 });
 
