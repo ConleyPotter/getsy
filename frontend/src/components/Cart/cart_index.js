@@ -4,16 +4,25 @@ import {Link} from 'react-router-dom'
 import CartIndexItem from './cart_index_item'
 
 class CartIndex extends React.Component{
+    constructor(props) {
+        super(props) 
+        this.state = { cart: {}, totalPrice: 0 }
+    }
 
     componentDidMount(){
-        //fetchCartHere
+        const data = this.props.fetchCart(this.props.currentUser._id)
+        this.setState({ cart: data.item, totalPrice: data.total });
     }
-
-    renderCartItems() {
-        //grab cart and create CartIndexItem for each cart item
-    }
-
+    
     render(){
+        const { cart } = this.state;
+        const totalPrice = 0
+        const cartItems = cart.map(item => {
+            return (
+                <CartIndexItem key={item.id} item={item}/>
+            )
+        })
+    
         return (
             <div className="cart-wrapper">
                 <div className="upper-cart"> 
@@ -23,14 +32,13 @@ class CartIndex extends React.Component{
                 <div className="cart-main-display">
                     <div className="cart-left-size">
                         <ul className="cart-items-container">
-                            <CartIndexItem />
-                            <CartIndexItem />
+                            {cartItems}
                         </ul>
                     </div>
                     <div className="cart-right-side">
                         <div className="cart-total-span">
                             <span>Item(s) total</span>
-                            <span>$10.24</span>
+                            <span>${this.state.totalPrice}</span>
                         </div>
                         <Link to="#" className="checkout-btn">Proceed to Checkout</Link>
                     </div>

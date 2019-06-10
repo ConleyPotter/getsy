@@ -5,6 +5,7 @@ const passport = require('passport');
 
 const ShoppingCartItem = require('../../models/Shopping_cart');
 const User = require('../../models/User');
+const Product = require('../../models/Product');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the shopping_cart route" }));
 
@@ -12,11 +13,18 @@ router.get('/:user_id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     ShoppingCartItem.find({owner_id: req.params.user_id})
-      .then(item => {
-        if (Array.isArray(item) && item.length == 0) { 
+      .then(items => {
+        if (Array.isArray(items) && items.length == 0) { 
           res.status(400).json({notFound: "Your cart is empty."})
         }
-        else res.json(item);
+        else {
+          let total;
+          items.forEach(item => {
+            let price = Product.findById(item.product_id).price
+            total += price;
+          })
+          res.json({totalPrice: total, item: item})
+        };
       })
       .catch(err => 
         res.status(404).json(err.message)
@@ -26,7 +34,7 @@ router.get('/:user_id',
 router.post('/', (req, res) => {
   passport.authenticate('jwt', { session: false })
   if (ShoppingCartItem.find({owner_id: req.shoppingCartItem.owner_id, product_id: req.shoppingCartItem.product_id})) {
-    ShoppingCartItem.updateOne({ quntity: (req.shoppingCartItem.quantity + 1) })
+    ShoppingCartItem.updateOne({ quantity: (req.shoppingCartItem.quantity + 1) })
   }
   const newShoppingCartItem = new ShoppingCartItem({
     owner_id: req.shoppingCartItem.owner_id,
@@ -48,10 +56,23 @@ router.delete("/delete/:id", (req, res) => {
         if (item._id === req.body.product_id) {
           ShoppingCartItem.findByIdAndRemove(item._id, err => {
             if (err) res.send(err);
-            else res.json({ message: "This item has been removed from your cart." })
+            else res.json({ id: item._id })
           })
         } 
       })
+})
+
+router.delete("/delete_cart/:user_id", (req, res) => {
+  passport.authenticate('jwt', { session: false })
+    ShoppingCartItem.deleteMany({ owner_id: req.params.user_id }, (err, data) => {
+      if (err) {
+        return err 
+      } else {
+        res.json({
+          message: "Your cart is now empty."
+        })
+      }
+    })
 })
 
 module.exports = router;

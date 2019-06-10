@@ -1,6 +1,6 @@
 import React from 'react'
 import './product_show.css';
-// import leicaImg from './leica.jpg';
+import leicaImg from './leica.jpg';
 
 
 class ProductShow extends React.Component{
