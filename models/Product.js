@@ -30,6 +30,9 @@ const ProductSchema = new Schema({
   category: {
     type: String,
     // required: true
+  },
+  image_url:{
+    type: String
   }
 });
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import NavBarContainer from "./Nav/navbar_container";
 import Splash from "./Splash/splash";
 import Modal from "./Modal/modal";
@@ -12,6 +12,8 @@ import ProductUserContainer from "./Products/product_user_index_container";
 import ProductShowContainer from './Product_Show/product_show_container';
 import CartIndexContainer from './Cart/cart_index_container';
 import "./app.css";
+
+
 
 const App = () => (
 	<div>

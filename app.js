@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require("express");
 const path = require("path");
@@ -5,12 +6,13 @@ const path = require("path");
 // Route imports
 const users = require("./routes/api/users");
 const products = require("./routes/api/products");
+const s3_route = require("./routes/s3")
 
 const app = express();
 const db = require('./config/keys').mongoURI;
-const User = require('./models/User');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
 
 // DB CONNECTION //
 mongoose 
@@ -28,6 +30,8 @@ require('./config/passport')(passport);
 // ROUTES //
 app.use("/api/users", users);
 app.use("/api/products", products);
+app.use("/s3", s3_route);
+
 
 // SERVER CONFIG //
 const port = process.env.PORT || 5000;
