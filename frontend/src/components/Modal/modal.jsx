@@ -5,6 +5,7 @@ import LoginFormContainer from '../Session/login_form_container';
 import SignupFormContainer from '../Session/signup_form_container';
 import ProdDeletionModal from '../Product_Show/prod_deletion_msg';
 import './modal.css'
+import '../Product_Show/prod_deletion.css'
 
 function modalAction({ modal, closeModal }) {
   if (!modal) {

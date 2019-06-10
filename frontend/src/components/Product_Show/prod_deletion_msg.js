@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
+import './prod_deletion.css'
 
 
 class ProdDeletionModal extends React.Component {
@@ -18,12 +19,12 @@ class ProdDeletionModal extends React.Component {
     let deletionModal;
     if (this.props.type === "success") {
       deletionModal = 
-          <label className="prod-deletion-error">
+          <label className="prod-deletion-msg">
             This product was deleted successfully.
           </label>
     } else if (this.props.type === "error") {
       deletionModal = 
-        <label className="prod-deletion-error">
+        <label className="prod-deletion-msg">
           There was a problem with your request. Please try again.
         </label>  
     }
@@ -31,7 +32,7 @@ class ProdDeletionModal extends React.Component {
       <div className="deletion-modal-container">
         {deletionModal}
         <div
-          className="prod-deletion-error-ok"
+          className="prod-deletion-msg-ok"
           onClick={this.okClickHandle}>
           OK
         </div>
