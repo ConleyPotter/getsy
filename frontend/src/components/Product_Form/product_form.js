@@ -20,17 +20,12 @@ class ProductForm extends React.Component {
         e.preventDefault();
         this.props.action(this.state)
           .then((res) => {
-            if (res.type === "RECEIVE_PRODUCT") {
-              // this.props.history.push(`/products/${this.state._id}`);
+            if (res.type === "RECEIVE_PRODUCT" && this.props.formType === 'edit') {
               this.props.fetchProduct(this.state._id)
+            } else if (res.type === "RECEIVE_PRODUCT" && this.props.formType === 'new') {
+              this.props.history.push(`/products/${res.product._id}`);   
             }
           })
-        // .then(product => {
-        //     if (product){
-        //         this.setState({product : product })
-        //         // this.props.history.push(`/products/${product._id}`);
-        //     }
-        // })
     }
 
     renderErrors() {
