@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import leicaImg from './leica.jpg';
+// import leicaImg from './leica.jpg';
 
 
 class ProductIndexItem extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductIndexItem from './product_index_item'
 import './product_index.css'
-import leicaImg from './leica.jpg';
+// import leicaImg from './leica.jpg';
 
 class ProductIndex extends React.Component {
   constructor(props) {

@@ -26,7 +26,7 @@ router.get('/:user_id',
 router.post('/', (req, res) => {
   passport.authenticate('jwt', { session: false })
   if (ShoppingCartItem.find({owner_id: req.shoppingCartItem.owner_id, product_id: req.shoppingCartItem.product_id})) {
-    ShoppingCartItem.updateOne({ quntity: (req.shoppingCartItem.quantity + 1) })
+    ShoppingCartItem.updateOne({ quantity: (req.shoppingCartItem.quantity + 1) })
   }
   const newShoppingCartItem = new ShoppingCartItem({
     owner_id: req.shoppingCartItem.owner_id,
@@ -39,16 +39,7 @@ router.post('/', (req, res) => {
     .catch(err => res.status(400).json(err.message))
 })
 
-router.patch("/edit", (req, res) => {
-  passport.authenticate('jwt', {session: fale })
-  ShoppingCartItem.findById(req.shoppingCartItem._id)
-    .then(item => ShoppingCartItem.updateOne({
-      _id: item._id},
-      {$set: {
-        product_id: 
-      }}
-    ))
-})
+
 
 
 router.delete("/delete/:id", (req, res) => {
