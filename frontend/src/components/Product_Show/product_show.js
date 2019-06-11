@@ -85,11 +85,12 @@ class ProductShow extends React.Component{
           Edit this item
         </button>
       }
-    
+      let img = product.image_url ? product.image_url : leicaImg;
+
         return (
           <div>
             <div className="product-detail-container">
-              <img src={leicaImg} className="product-show-img"/>
+              <img src={img} className="product-show-img"/>
               <div className="product-details">
                 <span>By: {user.fName}</span>
                 <div className="product-detail-name">{product.name}</div>

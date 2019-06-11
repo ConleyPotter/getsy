@@ -27,6 +27,11 @@ export const deleteProduct = product_id => {
   return axios.delete(`api/products/${product_id}`);
 }
 
-export const updateProduct = product => {
-  return axios.patch(`api/products/${product._id}`, product);
+export const updateProduct = (product, product_id) => {
+  return axios({
+    method: 'patch',
+    url: `api/products/${product_id}`,
+    data: product,
+    config: { headers: {'Content-Type': 'multipart/form-data' }}
+    })
 }

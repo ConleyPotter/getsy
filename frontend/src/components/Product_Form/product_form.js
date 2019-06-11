@@ -18,14 +18,31 @@ class ProductForm extends React.Component {
     
     handleSubmit(e){
         e.preventDefault();
-        this.props.action(this.state)
-          .then((res) => {
-            if (res.type === "RECEIVE_PRODUCT" && this.props.formType === 'edit') {
-              this.props.fetchProduct(this.state._id)
-            } else if (res.type === "RECEIVE_PRODUCT" && this.props.formType === 'new') {
-              this.props.history.push(`/products/${res.product._id}`);   
-            }
+        const formData = new FormData();
+        
+        Object.keys(this.state).forEach(key => {
+          if (key === "file") {
+            formData.append(key, this.state[key])
+          } else {
+            formData.append(key, this.state[key])
+           }
+        })
+        
+        if (this.props.formType === 'edit'){
+          this.props.action(formData, this.state._id)
+          .then(res => {
+            this.props.fetchProduct(this.state._id)
           })
+        } else {
+          this.props.action(formData)
+            .then((res) => {
+               if (res.type === "RECEIVE_PRODUCT" && this.props.formType === 'new') {
+                this.props.history.push(`/products/${res.product._id}`);   
+              }
+            })
+
+        }
+         
     }
 
     renderErrors() {
@@ -39,7 +56,15 @@ class ProductForm extends React.Component {
 	}
 
     render(){
-
+        let fileInput = null;
+        if (this.props.formType !== 'edit'){
+          fileInput = (
+            <>
+            <br></br>
+            <input type="file" name="file" onChange={e => {this.setState( { file: e.target.files[0]} )}}/> 
+            </>
+          )
+        }
         return (
           <div className="create-product-outer-container">
             <div className="form-container">
@@ -133,6 +158,7 @@ class ProductForm extends React.Component {
                     Gifts
                   </option>
                 </select>
+                {fileInput}
                 <input
                   id="product-submit"
                   type="submit"

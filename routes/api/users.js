@@ -35,7 +35,8 @@ router.get("/u/:user_id", (req, res)=>{
         res.json({
             id: user.id,
             email: user.email,
-            fName: user.fName
+            fName: user.fName,
+            date: user.date
         });
     })
     .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
@@ -156,17 +157,6 @@ router.get("/u", (req, res) => {
   .catch(err => res.status(404).json({nouser: "no user found"}))
 })
 
-// find a user by user_id
-router.get("/u/:user_id", (req, res) => {
-  User.findById(req.params.user_id)
-    .then(user => {
-      res.json({
-        id: user.id,
-        email: user.email,
-        fName: user.fName
-      });
-    })
-    .catch(err => res.status(404).json({ nouser: "Could not find a user with that id" }))
-})
+
 
 module.exports = router;

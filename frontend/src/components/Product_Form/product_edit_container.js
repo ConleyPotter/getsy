@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchProduct: product_id => dispatch(fetchProduct(product_id)),
-  action: product => dispatch(editProduct(product))
+  action: (product, product_id) => dispatch(editProduct(product, product_id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductForm)

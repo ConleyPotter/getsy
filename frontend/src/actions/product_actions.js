@@ -108,8 +108,10 @@ export const deleteProduct = product_id => dispatch => {
   .catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
-export const editProduct = product => dispatch => {
-  return ProductUtils.updateProduct(product)
-  .then(product => dispatch(updateProduct(product)))
+export const editProduct = (product, product_id) => dispatch => {
+  return ProductUtils.updateProduct(product, product_id)
+  .then(product => {
+	  dispatch(updateProduct(product.data))
+})
   .catch(err => dispatch(receiveErrors(err.response.data)))
 }

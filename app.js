@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require("express");
 const path = require("path");
@@ -12,6 +13,8 @@ const User = require('./models/User');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+const multer = require('multer');
+
 // DB CONNECTION //
 mongoose 
   .connect(db, { useNewUrlParser: true})
@@ -21,6 +24,7 @@ mongoose
 // MIDDLEWARE //
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+// app.use(multer().array());
 
 app.use(passport.initialize());
 require('./config/passport')(passport);
