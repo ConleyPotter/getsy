@@ -4,6 +4,7 @@ import leicaImg from './leica.jpg';
 import { Redirect } from 'react-router'
 import EditProductContainer from '../Product_Form/product_edit_container';
 
+
 class ProductShow extends React.Component{
 
     constructor(props){
