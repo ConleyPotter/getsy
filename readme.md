@@ -2,8 +2,6 @@
 
 Getsy is a clone of Etsy, an e-commerce application where users can sell handmade or vintage products. 
 
-https://getsy-app.herokuapp.com/
-
 ---
 
 ## Technologies
@@ -13,6 +11,9 @@ https://getsy-app.herokuapp.com/
 -   MongoDb - non-relational database
 -   React-Redux - static page frontend routing
 -   AWS / S3 integration for hosting images
+
+* For a live example, please visit the app hosted on heroku: 
+https://getsy-app.herokuapp.com/
 
 
 ## Features
@@ -28,11 +29,6 @@ https://getsy-app.herokuapp.com/
     * Product image
         * Images are hosted on AWS
         * User is able to upload a product image on listing creation
-
-3. Shopping Cart
-    * Add / update an item to / in the cart 
-    * Remove an item from the cart 
-    * Empty the cart
 
 ## AWS / S3 
 AWS configuration for connecting app to AWS and S3 for image hosting.
@@ -108,8 +104,9 @@ render() {
 
 ## Future Features
 
-1. Reviews
-2. User profile
+1. Shopping Cart
+2. Reviews
+3. User profile
 
 ### credits:
 Photos from Unsplash: 
