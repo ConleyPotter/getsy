@@ -6,22 +6,28 @@ import CartIndexItem from './cart_index_item'
 class CartIndex extends React.Component{
     constructor(props) {
         super(props) 
-        this.state = { cart: {}, totalPrice: 0 }
+        this.state = { cart: [], totalPrice: 0 }
     }
 
     componentDidMount(){
         const data = this.props.fetchCart(this.props.currentUser._id)
-        this.setState({ cart: data.item, totalPrice: data.total });
+        this.setState({ cart: data.items, totalPrice: data.total });
     }
     
     render(){
+        debugger
         const { cart } = this.state;
         const totalPrice = 0
-        const cartItems = cart.map(item => {
-            return (
-                <CartIndexItem key={item.id} item={item}/>
-            )
-        })
+        let cartItems;
+        if (cart) {
+            cartItems = cart.map(item => {
+                return (
+                    <CartIndexItem key={item.id} item={item}/>
+                )
+            })
+        } else {
+            cartItems = null
+        }
     
         return (
             <div className="cart-wrapper">

@@ -67,13 +67,13 @@ class NavBar extends React.Component {
           <Link to="/products" className="etsy-header"> Getsy</Link>
           
           <div className="right-hand-buttons">
-            {this.getButtons()}
-              <Link to={cartLink} >
-            <div className="shopping-cart-container">
+          {this.getButtons()}
+            <Link to={cartLink} >
+              <div className="shopping-cart-container">
                 <span className="fas fa-shopping-cart" />
                 Cart
-            </div>
-              </Link>
+              </div>
+            </Link>
           </div>
         </div>
         <div className="bottom-navbar-category-buttons">

@@ -7,6 +7,7 @@ export const getShoppingCart = (user_id) => {
 // remove action
 
 export const addProductToCart = data => {
+    debugger
 	return axios.post("/api/cart", data);
 };
 

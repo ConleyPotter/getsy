@@ -27,7 +27,12 @@ class ProductShow extends React.Component{
               <div className="product-details">
                 <div className="product-detail-name">{this.props.product.name}</div>
                 <div className="product-detail-price">${this.props.product.price}</div>
-                <button className="add-to-basket-button">Add to basket</button>
+                <button 
+                  className="add-to-basket-button"
+                  onClick={
+                    () => this.props.postCartItem(this.props.product._id, this.props.currentUser._id)
+                  }
+                >Add to basket</button>
                 <div className="product-detail-description">{this.props.product.description}</div>
               </div>
             </div>

@@ -10,7 +10,7 @@ import {
     let newState = Object.assign({}, state)
     switch(action.type) {
       case RECEIVE_CART: 
-        return { item: action.data.item, 
+        return { items: action.data.items, 
           total: action.data.totalPrice }
       case RECEIVE_CART_ITEM:
         return { [action.cart.id]: action.cart}

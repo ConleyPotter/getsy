@@ -40,6 +40,7 @@ export const fetchCart = (user_id) => dispatch => {
 }
 
 export const addProductToCart = data => dispatch => {
+    debugger
     return CartUtil.addProductToCart(data)
     .then(cartItem => dispatch(receiveCartItem(cartItem)))
     .catch(err => console.log(err))
