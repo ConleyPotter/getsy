@@ -99,6 +99,12 @@ class ProductForm extends React.Component {
                     can find your product
                   </p>
                 </div>
+                <div className="create-a-listing-header">
+                  <h1>Photo</h1>
+                  <p>
+                    Add a photo to show off your product
+                  </p>
+                </div>
               </div>
               <form
                 className="create-or-destroy"
