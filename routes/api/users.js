@@ -4,7 +4,7 @@ const router = express.Router();
 // Model
 const User = require("../../models/User");
 const Product = require("../../models/Product");
-const ShoppingCart = require("../../models/Shopping_cart")
+// const ShoppingCart = require("../../models/Shopping_cart")
 
 // Password config
 const bcrypt = require('bcryptjs');
@@ -35,7 +35,8 @@ router.get("/u/:user_id", (req, res)=>{
         res.json({
             id: user.id,
             email: user.email,
-            fName: user.fName
+            fName: user.fName,
+            date: user.date
         });
     })
     .catch(err => res.status(404).json({nouser: "Could not find a user with that id"}))
@@ -148,17 +149,14 @@ router.get('/:user_id', (req, res) => {
     );
 })
 
-// find a user by user_id
-router.get("/u/:user_id", (req, res) => {
-  User.findById(req.params.user_id)
-    .then(user => {
-      res.json({
-        id: user.id,
-        email: user.email,
-        fName: user.fName
-      });
-    })
-    .catch(err => res.status(404).json({ nouser: "Could not find a user with that id" }))
+router.get("/u", (req, res) => {
+  User.find({}, 'fName email _id date')
+  .then(users => {
+    res.json(users) 
+  })
+  .catch(err => res.status(404).json({nouser: "no user found"}))
 })
+
+
 
 module.exports = router;

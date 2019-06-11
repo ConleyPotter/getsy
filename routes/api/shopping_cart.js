@@ -33,8 +33,9 @@ router.get('/:user_id',
 
 router.post('/', (req, res) => {
   passport.authenticate('jwt', { session: false })
-  debugger
-  if (ShoppingCartItem.find({owner_id: req.body.owner_id, product_id: req.body.product_id})) {
+
+  // if (ShoppingCartItem.find({owner_id: req.shoppingCartItem.owner_id, product_id: req.shoppingCartItem.product_id})) {
+    if (ShoppingCartItem.find({owner_id: req.body.owner_id, product_id: req.body.product_id})) {
     ShoppingCartItem.updateOne({ quantity: (req.shoppingCartItem.quantity + 1) })
   }
   const newShoppingCartItem = new ShoppingCartItem({

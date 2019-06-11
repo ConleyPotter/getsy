@@ -3,7 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../Session/login_form_container';
 import SignupFormContainer from '../Session/signup_form_container';
+import ProdDeletionModal from '../Product_Show/prod_deletion_msg';
 import './modal.css'
+import '../Product_Show/prod_deletion.css'
 
 function modalAction({ modal, closeModal }) {
   if (!modal) {
@@ -18,15 +20,35 @@ function modalAction({ modal, closeModal }) {
     case 'signup':
       component = <SignupFormContainer />;
       break;
+    case 'deleteSuccess':
+      component = <ProdDeletionModal type="success" closeModal={closeModal}/>;
+      break;
+    case 'deleteError':
+      component = <ProdDeletionModal type="error" closeModal={closeModal}/>;
+      break
     default:
       return null;
   }
 
-  return (
+  let modalComponent; 
+  if (modal === 'signup' || modal === 'login') {
+    modalComponent = 
     <div className="modal-background" onClick={closeModal}>
       < div className="modal-child" onClick={e => e.stopPropagation()} >
         {component}
       </div>
+    </div>
+  } else {
+    modalComponent = 
+    <div className="prod-deletion-modal-background" onClick={closeModal}>
+      < div className="prod-deletion-modal-child" onClick={e => e.stopPropagation()} >
+        {component}
+      </div>
+    </div>
+  }
+  return (
+    <div>
+      {modalComponent}
     </div>
   )
 }

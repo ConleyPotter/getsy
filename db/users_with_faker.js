@@ -38,6 +38,8 @@ for (let i = 0; i < 100; i++) {
     })
   })
 
+  fakeUser.save()
+
 
   const productName = faker.commerce.productName();
   fakeProduct = new Product ({
@@ -57,10 +59,10 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log("Connected to MongoDB successfully")
-    User.insertMany(fakeUsers, function(err, docs) {
-      if (err) throw err;
-      else console.log(docs);
-    });
+    // User.insertMany(fakeUsers, function(err, docs) {
+    //   if (err) throw err;
+    //   else console.log(docs);
+    // });
     
     Product.insertMany(fakeProducts, function(err, docs) {
       if (err) throw err;
