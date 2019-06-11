@@ -1,7 +1,5 @@
 import React from 'react'
 import './product_show.css';
-import leicaImg from './leica.jpg';
-import { Redirect } from 'react-router'
 import EditProductContainer from '../Product_Form/product_edit_container';
 
 
@@ -86,12 +84,14 @@ class ProductShow extends React.Component{
           Edit this item
         </button>
       }
-      let img = product.image_url ? product.image_url : leicaImg;
+      let img = product.image_url
+        ? product.image_url
+        : "https://getsy-app.s3-us-west-2.amazonaws.com/markus-spiske-626757-unsplash.jpg";
 
         return (
           <div>
             <div className="product-detail-container">
-              <img src={img} className="product-show-img"/>
+              <img alt="" src={img} className="product-show-img"/>
               <div className="product-details">
                 <span>By: {user.fName}</span>
                 <div className="product-detail-name">{product.name}</div>
