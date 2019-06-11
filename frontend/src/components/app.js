@@ -7,28 +7,32 @@ import Modal from "./Modal/modal";
 import ProductIndexByCategory from './Products/index_products_by_category'
 import "./app.css";
 
+import ProductIndex from "./Products/product_index";
+import UserProfileContainer from './Users/user_profile_container'
 import ProductIndexContainer from "./Products/product_index_container";
 import ProductUserContainer from "./Products/product_user_index_container";
-
 import ProductShowContainer from './Product_Show/product_show_container'
-import "./app.css";
+import ProductCreateContainer from './Product_Form/product_create_container'
 
+import './app.css'
 const App = () => (
-	<div>
-		<Modal />
-		<NavBarContainer />
-		<Switch>
+  <div>
+    <Modal />
+    <NavBarContainer />
+    <Switch>
+      <ProtectedRoute exact path="/products/new" component={ProductCreateContainer} />
 			<ProtectedRoute exact path="/products/:product_id" component={ProductShowContainer} />
 			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
-      <ProtectedRoute exact path="/products" component={ProductIndexContainer} />
-      <ProtectedRoute 
+			<ProtectedRoute exact path="/products" component={ProductIndexContainer} />
+      <ProtectedRoute path="/users/:user_id" component={UserProfileContainer} />
+      <ProtectedRoute
         exact
-        path="/products/cat/:category" 
-        component={ProductIndexByCategory} 
+        path="/products/cat/:category"
+        component={ProductIndexByCategory}
       />
-			<AuthRoute exact path="/" component={Splash} />
-		</Switch>
-	</div>
+      <AuthRoute exact path="/" component={Splash} />
+    </Switch>
+  </div>
 );
 
-export default App;
+export default App; 

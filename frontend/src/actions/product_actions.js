@@ -5,6 +5,8 @@ export const RECEIVE_USER_PRODUCTS = "RECEIVE_USER_PRODUCTS";
 export const RECEIVE_PRODUCT_ERRORS = "RECEIVE_PRODUCT_ERRORS";
 export const RECEIVE_PRODUCT_OWNER = "RECEIVE_PRODUCT_OWNER"
 export const CLEAR_PRODUCTS = "CLEAR_PRODUCTS"
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const RECEIVE_CATEGORY_PRODUCTS = "RECEIVE_CATEGORY_PRODUCTS"
 
 export const receiveProducts = products => {
@@ -14,10 +16,12 @@ export const receiveProducts = products => {
 	}
 };
 
-export const receiveProduct = product => {
+export const receiveProduct = data => {
+	
 	return {
 		type: RECEIVE_PRODUCT, 
-		product
+		product: data.product,
+		user: data.user
 	}
 };
 
@@ -48,34 +52,54 @@ export const clearProducts = () => {
 	}
 }
 
-export const receiveErrors = errors => ({
-	type: RECEIVE_PRODUCT_ERRORS,
-	errors
-});
+export const receiveErrors = errors => {
+	return {
+		type: RECEIVE_PRODUCT_ERRORS,
+		errors
+	}
+};
 
 export const clearErrors = () => ({
-	type: "CLEAR_ERRORS"
+	type: CLEAR_ERRORS
 });
+
+export const removeProduct = product_id => ({
+  type: DELETE_PRODUCT,
+  product_id
+});
+
+export const updateProduct = product => ({
+  type: RECEIVE_PRODUCT,
+  product
+})
 
 export const fetchProducts = () => dispatch => {
 	return ProductUtils.getProducts()
-		.then(products => dispatch(receiveProducts(products)))
+		.then(products => {
+			
+			dispatch(receiveProducts(products.data))
+		})
 		.catch(err => console.log(err));
 };
 export const fetchUserProducts = user_id => dispatch => {
 	return ProductUtils.getUserProducts(user_id)
-		.then(products => dispatch(receiveUserProducts(products)))
+		.then(products => dispatch(receiveUserProducts(products.data)))
 		.catch(err => console.log(err));
 };
 export const fetchProduct = product_id => dispatch => {
 	return ProductUtils.getProduct(product_id)
-		.then(product => dispatch(receiveProduct(product)))
+		.then(product => {
+			dispatch(receiveProduct(product.data))
+		})
 		.catch(err => dispatch(receiveErrors(err)));
 };
 
 export const createProduct = data => dispatch => {
+	
 	return ProductUtils.createProduct(data)
-		.then(product => dispatch(receiveProduct(product)))
+		.then(product => {
+			return dispatch(receiveProduct(product.data))
+		})
 		.catch(err => dispatch(receiveErrors(err.response.data)));
 };
 
@@ -85,6 +109,19 @@ export const fetchProductOwner = user_id => dispatch => {
 	.catch(err => dispatch(receiveErrors(err.response.data)))
 }
 
+export const deleteProduct = product_id => dispatch => {
+  return ProductUtils.deleteProduct(product_id)
+  .then(() => dispatch(removeProduct(product_id)))
+  .catch(err => dispatch(receiveErrors(err.response.data)))
+}
+
+export const editProduct = (product, product_id) => dispatch => {
+  return ProductUtils.updateProduct(product, product_id)
+  .then(product => {
+	  dispatch(updateProduct(product.data))
+})
+  .catch(err => dispatch(receiveErrors(err.response.data)))
+}
 export const fetchCategoryProducts = category => dispatch => {
   return ProductUtils.getProductsByCategory(category)
     .then(products => dispatch(receiveCategoryProducts(products)))
