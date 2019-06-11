@@ -150,7 +150,7 @@ router.post('/', upload.single("file"),
   });
 
 // route to search by category
-router.get('/:category', (req, res) => {
+router.get('/cat/:category', (req, res) => {
   Product.find({ category: req.params.category })
     .then(products => res.json(products))
     .catch(err => 

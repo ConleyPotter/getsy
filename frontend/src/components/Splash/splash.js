@@ -24,14 +24,14 @@ class Splash extends React.Component {
               </div>
               <img
                 className="left-container-img"
-                src={`https://i.etsystatic.com/ij/26b2f5/1918869733/ij_halfxhalf.1918869733_prwzfh6e.jpg?version=0`}
+                src={`https://getsy-app.s3-us-west-2.amazonaws.com/animals-assorted-background-1043520.jpg`}
                 alt=""
               />
             </div>
             <div className="splash-main-right-container">
               <img
                 className="right-container-img"
-                src={`https://i.etsystatic.com/ij/18fad2/1871365640/ij_halfxhalf.1871365640_jspub0a7.jpg?version=0`}
+                src={`https://getsy-app.s3-us-west-2.amazonaws.com/markus-spiske-626757-unsplash.jpg`}
                 alt=""
               />
               <div className="yellow-box-small">

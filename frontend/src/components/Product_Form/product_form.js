@@ -7,7 +7,7 @@ class ProductForm extends React.Component {
         super(props)
         this.state = this.props.product;
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
     }
 
     onChange(field){
@@ -45,15 +45,15 @@ class ProductForm extends React.Component {
          
     }
 
-    renderErrors() {
-		return (
-			<ul>
-				{Object.keys(this.props.errors).map((error, i) => (
-					<li key={`error-${i}`}>{this.props.errors[error]}</li>
-        ))}
-			</ul>
-		);
-	}
+  //   renderErrors() {
+	// 	return (
+	// 		<ul>
+	// 			{Object.keys(this.props.errors).map((error, i) => (
+	// 				<li key={`error-${i}`}>{this.props.errors[error]}</li>
+  //       ))}
+	// 		</ul>
+	// 	);
+	// }
 
     render(){
         let fileInput = null;
@@ -68,7 +68,7 @@ class ProductForm extends React.Component {
         return (
           <div className="create-product-outer-container">
             <div className="form-container">
-              {this.renderErrors()}
+              {/* {this.renderErrors()} */}
               <div className="side-bar-info-container">
                 <div className="create-a-listing-header">
                   <h1>Listing Details</h1>

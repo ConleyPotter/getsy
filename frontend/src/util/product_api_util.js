@@ -35,3 +35,6 @@ export const updateProduct = (product, product_id) => {
     config: { headers: {'Content-Type': 'multipart/form-data' }}
     })
 }
+export const getProductsByCategory = category => {
+  return axios.get(`/api/products/cat/${category}`)
+};

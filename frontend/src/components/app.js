@@ -4,6 +4,8 @@ import { Switch } from "react-router-dom";
 import NavBarContainer from "./Nav/navbar_container";
 import Splash from "./Splash/splash";
 import Modal from "./Modal/modal";
+import ProductIndexByCategory from './Products/index_products_by_category'
+import "./app.css";
 
 import ProductIndex from "./Products/product_index";
 import UserProfileContainer from './Users/user_profile_container'
@@ -23,9 +25,14 @@ const App = () => (
 			<ProtectedRoute exact path="/users/:user_id/products" component={ProductUserContainer} />
 			<ProtectedRoute exact path="/products" component={ProductIndexContainer} />
       <ProtectedRoute path="/users/:user_id" component={UserProfileContainer} />
+      <ProtectedRoute
+        exact
+        path="/products/cat/:category"
+        component={ProductIndexByCategory}
+      />
       <AuthRoute exact path="/" component={Splash} />
     </Switch>
   </div>
-)
+);
 
 export default App; 

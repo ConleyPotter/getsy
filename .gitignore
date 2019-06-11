@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
 /config/development_keys.js
-/config/keys.js
 .vscode/*
 .env

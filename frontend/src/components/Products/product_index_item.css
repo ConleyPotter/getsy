@@ -1,0 +1,10 @@
+.product-card {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.product-tool-tip {
+  text-align: center;
+}
