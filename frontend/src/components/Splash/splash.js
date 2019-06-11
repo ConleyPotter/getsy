@@ -1,7 +1,7 @@
 // import React from './node_modules/react';
 // import { Link } from './node_modules/react-router-dom';
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './splash.css'
 import etsyCheck from './etsyCheck.png';
 // import dadEtsy from './dadEtsyImg.png';
