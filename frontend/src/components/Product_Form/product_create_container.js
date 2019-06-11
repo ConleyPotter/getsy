@@ -8,7 +8,7 @@ const msp = state => {
             price: 0,
             description: "",
             owner_id: "",
-            category: ""
+            category: "jewelry_and_accessories"
         },
         currentUser: state.session.user,
         errors: state.errors.product,
