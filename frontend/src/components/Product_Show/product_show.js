@@ -18,6 +18,7 @@ class ProductShow extends React.Component{
         this.handleDelete = this.handleDelete.bind(this);
         this.renderProductForm = this.renderProductForm.bind(this);
         this.renderDeleteSuccess = this.renderDeleteSuccess.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
     componentDidMount(){
       this.props.fetchProduct(this.props.match.params.product_id);
@@ -59,6 +60,13 @@ class ProductShow extends React.Component{
       this.setState({ showDeletionSuccess: true })
     }
 
+    handleClick() {
+      this.props.postCartItem(
+        this.props.product._id,
+        this.props.currentUser.id
+      ).then(this.props.history.push(`/cart/${this.props.currentUser.id}`))
+    }
+
     render(){
       if (!this.props.product) return null;
       const product = this.props.product
@@ -97,9 +105,7 @@ class ProductShow extends React.Component{
                 <div className="product-detail-price">${this.props.product.price}</div>
                 <button 
                   className="add-to-basket-button"
-                  onClick={
-                    () => this.props.postCartItem(this.props.product._id, this.props.currentUser._id)
-                  }
+                  onClick={this.handleClick}
                 >Add to basket</button>
                 <div className="product-detail-description">{this.props.product.description}</div>
                 <div className="buttons-container">

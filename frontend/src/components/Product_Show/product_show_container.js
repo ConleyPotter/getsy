@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {fetchProduct, clearErrors, deleteProduct } from '../../actions/product_actions'
 import { openModal, closeModal } from '../../actions/modal_actions';
+import { addProductToCart } from '../../actions/shopping_cart_actions'
 import ProductShow from './product_show'
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         clearErrors: () => dispatch(clearErrors()),
         deleteProduct: product_id => dispatch(deleteProduct(product_id)),
         openModal: formType => dispatch(openModal(formType)),
-        closeModa: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal())
     }
 }
 

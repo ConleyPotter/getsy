@@ -13,7 +13,8 @@ import {
         return { items: action.data.items, 
           total: action.data.totalPrice }
       case RECEIVE_CART_ITEM:
-        return { [action.cart.id]: action.cart}
+        debugger
+        return { [action.cartItem.data._id]: action.cartItem.data}
       case REMOVE_CART:  
         return {}
       case REMOVE_CART_ITEM:

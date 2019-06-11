@@ -5,25 +5,26 @@ import CartIndexItem from './cart_index_item'
 
 class CartIndex extends React.Component{
     constructor(props) {
-        super(props) 
-        this.state = { cart: [], totalPrice: 0 }
+        super(props);
     }
 
     componentDidMount(){
-        const data = this.props.fetchCart(this.props.currentUser._id)
-        this.setState({ cart: data.items, totalPrice: data.total });
+        this.props.fetchCart(this.props.currentUser.id)
     }
     
     render(){
-        debugger
-        const { cart } = this.state;
-        const totalPrice = 0
+        const { cart } = this.props;
         let cartItems;
         if (cart) {
             cartItems = cart.map(item => {
-                return (
-                    <CartIndexItem key={item.id} item={item}/>
-                )
+                let productToPass;
+                this.props.fetchProduct(item.product_id).then(product => {
+                    debugger
+                    productToPass = product;
+                    return (
+                        <CartIndexItem key={item._id} item={item} product={productToPass} />
+                    )
+                })
             })
         } else {
             cartItems = null
@@ -44,7 +45,7 @@ class CartIndex extends React.Component{
                     <div className="cart-right-side">
                         <div className="cart-total-span">
                             <span>Item(s) total</span>
-                            <span>${this.state.totalPrice}</span>
+                            <span>${this.props.cartPrice}</span>
                         </div>
                         <Link to="#" className="checkout-btn">Proceed to Checkout</Link>
                     </div>

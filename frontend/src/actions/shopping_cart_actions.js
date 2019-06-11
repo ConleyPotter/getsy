@@ -35,12 +35,11 @@ const removeCartItem = (id) => {
 
 export const fetchCart = (user_id) => dispatch => {
     return CartUtil.getShoppingCart(user_id)
-        .then(data => dispatch(receiveCart(data)))
+        .then(data => dispatch(receiveCart(data.data)))
         .catch(err => console.log(err))
 }
 
 export const addProductToCart = data => dispatch => {
-    debugger
     return CartUtil.addProductToCart(data)
     .then(cartItem => dispatch(receiveCartItem(cartItem)))
     .catch(err => console.log(err))

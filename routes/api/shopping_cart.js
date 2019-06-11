@@ -35,13 +35,13 @@ router.post('/', (req, res) => {
   passport.authenticate('jwt', { session: false })
 
   // if (ShoppingCartItem.find({owner_id: req.shoppingCartItem.owner_id, product_id: req.shoppingCartItem.product_id})) {
-    if (ShoppingCartItem.find({owner_id: req.body.owner_id, product_id: req.body.product_id})) {
-    ShoppingCartItem.updateOne({ quantity: (req.shoppingCartItem.quantity + 1) })
+  if (ShoppingCartItem.find({owner_id: req.body.owner_id, product_id: req.body.product_id})) {
+    ShoppingCartItem.updateOne({ quantity: (req.body.quantity + 1) })
   }
   const newShoppingCartItem = new ShoppingCartItem({
-    owner_id: req.shoppingCartItem.owner_id,
-    product_id: req.shoppingCartItem.product_id,
-    quantity: req.shoppingCartItem.quantity
+    owner_id: req.body.owner_id,
+    product_id: req.body.product_id,
+    quantity: req.body.quantity
   })
   
   newShoppingCartItem.save() 
