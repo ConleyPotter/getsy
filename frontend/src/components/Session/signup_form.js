@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>
-            {this.state.errors[error]}
+            {this.state.errors}
           </li>
         ))}
       </ul>
@@ -65,7 +65,7 @@ class SignupForm extends React.Component {
               <div className="sign-up-label-div">
                 Email address <span className="sign-up-span">  *</span>
               </div>
-              <input type="text"
+              <input type="email"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
@@ -92,6 +92,7 @@ class SignupForm extends React.Component {
                 onChange={this.update('password')}
                 placeholder="Password"
                 className="sign-up-input"
+                required minlength="6"
               />
             </div>
             <input 

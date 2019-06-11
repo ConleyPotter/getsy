@@ -136,7 +136,7 @@ class ProductForm extends React.Component {
                     value={this.state.category}
                     onChange={this.onChange("category")}
                 >
-                  <option value="jewlery_and_accessories">
+                  <option value="jewelry_and_accessories">
                     Jewelry & Accessories
                   </option>
                   <option value="clothing_and_shoes">
