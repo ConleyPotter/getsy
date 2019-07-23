@@ -131,7 +131,7 @@ class ProductForm extends React.Component {
                   className="form-input-text-area"
                 />
                 <label>category</label>
-                <select 
+                <select className="select-create"
                     name="category" 
                     value={this.state.category}
                     onChange={this.onChange("category")}
