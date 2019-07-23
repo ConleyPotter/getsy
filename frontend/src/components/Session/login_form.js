@@ -16,11 +16,25 @@ class LoginForm extends React.Component {
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.renderErrors = this.renderErrors.bind(this);
+		this.demoLogin = this.demoLogin.bind(this);
 	}
 
 	//clear errors action an
 	componentWillUnmount() {
 		this.props.clearErrors();
+	}
+
+	demoLogin(e){
+		e.preventDefault()
+		let user = {
+			email: "lisa@test.com",
+			password: "password"
+		}
+		this.props.login(user)
+		.then(
+			this.props.history.push("/products"),
+			this.props.closeModal()
+		)
 	}
 
 	update(field) {
@@ -91,6 +105,11 @@ class LoginForm extends React.Component {
 							value="Sign in"
 							className="sign-in-signin-button"
 						/>
+						<button
+							onClick={this.demoLogin}
+							type="submit"
+							className="sign-in-signin-button"
+						>Demo Sign</button>
 						{this.renderErrors()}
 					</div>
 				</form>
