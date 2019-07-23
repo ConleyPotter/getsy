@@ -4,6 +4,14 @@ Getsy is a clone of Etsy, an e-commerce application where users can sell handmad
 
 ---
 
+</br>
+
+<p align="center">
+    <img src="frontend/public/images/GetsySplash.png"/>
+</p>
+
+</br>
+
 ## Technologies
 
 -   Node.js - backend api
@@ -30,6 +38,15 @@ https://getsy-app.herokuapp.com/
         * Images are hosted on AWS
         * User is able to upload a product image on listing creation
 
+
+</br>
+
+<p align="center">
+    <img src="frontend/public/images/GetsyHome.png"/>
+</p>
+
+</br>
+
 ## AWS / S3 
 AWS configuration for connecting app to AWS and S3 for image hosting.
 A user is able to upload an image on listing creation.
@@ -37,6 +54,14 @@ A user is able to upload an image on listing creation.
 ## Modal / Hidden components
 Several different methods of rendering modals or hidden components used throughout the app.
 Some were rendered by implementing a Modals class, and others made use of CSS to hide/display elements.
+
+</br>
+
+<p align="center">
+    <img src="frontend/public/images/GetsyAuthModal.png"/>
+</p>
+
+</br>
 
 Modal class example:
 ```javascript 
