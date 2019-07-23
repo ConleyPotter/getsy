@@ -3,3 +3,5 @@ node_modules
 /config/development_keys.js
 .vscode/*
 .env
+
+docker-compose.yml

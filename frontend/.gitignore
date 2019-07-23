@@ -24,3 +24,4 @@ yarn-error.log*
 
 /config/keys.js
 /config/development_keys.js
+docker-compose.yml
